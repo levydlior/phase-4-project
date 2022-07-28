@@ -44,7 +44,7 @@ function App() {
       </header>
       <Switch>
         <Route exact path="/login">
-          <Login />
+          <Login onCreateOrLog={handleCreateOrLog}/>
         </Route>
         <Route exact path="/create-account">
           <CreateAnAccount onCreateOrLog={handleCreateOrLog} />

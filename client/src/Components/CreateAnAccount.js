@@ -10,7 +10,6 @@ function CreateAnAccount({ onCreateOrLog }) {
   function handleCreateChange(e) {
     const target = e.target.name;
     const value = e.target.value;
-
     setCreateAccountForm({ ...createAccountForm, [target]: value });
   }
 
@@ -21,24 +20,28 @@ function CreateAnAccount({ onCreateOrLog }) {
       method: "POST",
       headers: {
         "content-type": "application/json",
-        "accept": "application/json",
+        accept: "application/json",
       },
       body: JSON.stringify(createAccountForm),
     }).then((r) => {
       if (r.ok) {
-        r.json().then((user) => {   
+        r.json().then((user) => {
           setErrors(null);
+          setCreateAccountForm({ username: "", password: "" });
           onCreateOrLog(user);
         });
       } else {
-        r.json().then((err) => setErrors(err));
+        r.json().then((err) => {
+          setCreateAccountForm({ username: "", password: "" });
+          setErrors(err);
+        });
       }
     });
   }
 
-
   return (
     <div>
+      <h2>Create An Account:</h2>
       <form onSubmit={handleCreateSubmit}>
         <input
           name="username"
@@ -47,7 +50,7 @@ function CreateAnAccount({ onCreateOrLog }) {
           value={createAccountForm.username}
           onChange={handleCreateChange}
         />
-        
+        {errors ? <p>{errors.errors}</p> : null}
         <input
           name="password"
           type="password"
