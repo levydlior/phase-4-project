@@ -1,8 +1,12 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
+puts "seeding"
 
-puts "seeding.."
+City.create!(name: 'San Francisco')
+City.create!(name: 'Seattle')
+City.create!(name: 'Austin')
+City.create!(name: 'Toronto')
+City.create!(name: 'New York')
+City.create!(name: 'Las Vegas')
+City.create!(name: 'Boston')
 
 User.create(username: "mark", password: "mark")
 User.create(username: "lior", password: "lior")
@@ -10,3 +14,4 @@ User.create(username: "shane", password: "shane")
 
 
 puts "Done seeding"
+
