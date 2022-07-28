@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function CreateAnAccount({ onCreateOrLog }) {
+function CreateAnAccount({ onCreateOrLog, responseFromAccountOrLogged }) {
   const [createAccountForm, setCreateAccountForm] = useState({
     username: "",
     password: "",
@@ -41,25 +41,33 @@ function CreateAnAccount({ onCreateOrLog }) {
 
   return (
     <div>
-      <h2>Create An Account:</h2>
-      <form onSubmit={handleCreateSubmit}>
-        <input
-          name="username"
-          type="text"
-          required
-          value={createAccountForm.username}
-          onChange={handleCreateChange}
-        />
-        {errors ? <p>{errors.errors}</p> : null}
-        <input
-          name="password"
-          type="password"
-          required
-          value={createAccountForm.password}
-          onChange={handleCreateChange}
-        />
-        <input type="submit" />
-      </form>
+      {!responseFromAccountOrLogged ? (
+        <>
+          <h2>Create An Account:</h2>
+          <form onSubmit={handleCreateSubmit}>
+            <input
+              name="username"
+              type="text"
+              required
+              value={createAccountForm.username}
+              onChange={handleCreateChange}
+            />
+            {errors ? <p>{errors.errors}</p> : null}
+            <input
+              name="password"
+              type="password"
+              required
+              value={createAccountForm.password}
+              onChange={handleCreateChange}
+            />
+            <input type="submit" />
+          </form>
+        </>
+      ) : (
+        <>
+          <h2>Account created - Welcome!</h2>
+        </>
+      )}
     </div>
   );
 }

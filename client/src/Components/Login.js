@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function Login({ onCreateOrLog }) {
+function Login({ onCreateOrLog, responseFromAccountOrLogged }) {
   const [loginAccount, setLoginAccount] = useState({
     username: "",
     password: "",
@@ -32,32 +32,40 @@ function Login({ onCreateOrLog }) {
         });
       } else {
         r.json().then((err) => {
-            setLoginAccount({ username: "", password: "" });
-            setErrors(err)});
+          setLoginAccount({ username: "", password: "" });
+          setErrors(err);
+        });
       }
     });
   }
+
   return (
     <div>
-        <h2>Login:</h2>
-      <form onSubmit={handleLoginSubmit}>
-        <input
-          name="username"
-          type="text"
-          required
-          value={loginAccount.username}
-          onChange={handleLoginChange}
-        />
-        <input
-          name="password"
-          type="password"
-          required
-          value={loginAccount.password}
-          onChange={handleLoginChange}
-        />
-        {errors ? <p>{errors.error}</p> : null}
-        <input type="submit" />
-      </form>
+      {!responseFromAccountOrLogged ? (
+        <>
+          <h2>Login:</h2>
+          <form onSubmit={handleLoginSubmit}>
+            <input
+              name="username"
+              type="text"
+              required
+              value={loginAccount.username}
+              onChange={handleLoginChange}
+            />
+            <input
+              name="password"
+              type="password"
+              required
+              value={loginAccount.password}
+              onChange={handleLoginChange}
+            />
+            {errors ? <p>{errors.error}</p> : null}
+            <input type="submit" />
+          </form>
+        </>
+      ) : (
+        <h2>Welcome!</h2>
+      )}
     </div>
   );
 }
