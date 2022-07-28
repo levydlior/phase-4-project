@@ -1,5 +1,5 @@
 class CitiesController < ApplicationController
-  skip_before_action :authorize, only: [:index, :show, :destory]
+  skip_before_action :authorize, only: [:index, :show, :create, :destory]
 
   # GET /cities
   def index
@@ -15,9 +15,9 @@ class CitiesController < ApplicationController
 
   # POST /cities
   def create
-    @city = City.create!(city_params)
+    city = City.create!(city_params)
   
-    render json: @city, status: :created, location: @city
+    render json: city, status: :created
     
   end
 

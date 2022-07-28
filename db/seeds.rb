@@ -1,3 +1,6 @@
+City.destroy_all
+User.destroy_all
+
 puts "seeding"
 
 City.create!(name: 'San Francisco')
