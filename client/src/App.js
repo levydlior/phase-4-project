@@ -77,16 +77,18 @@ function App() {
           )}
         </nav>
       </header>
-      <Switch>
         {loggedUser ? (
-          <>
 
+<Switch>
             <Route exact path="/">
               <MainContent />
             </Route>
-          </>
+            <Route exact path="*">
+          <h2>404 Error Not Found</h2>
+        </Route>
+        </Switch>
         ) : (
-          <>
+          <Switch >
             <Route exact path="/login">
               <Login
                 onCreateOrLog={handleCreateOrLog}
@@ -105,12 +107,12 @@ function App() {
                 responseFromAccountOrLogged={responseFromAccountOrLogged}
               />
             </Route>
-          </>
-        )}
-        <Route path="*">
+            <Route exact path="*">
           <h2>404 Error Not Found</h2>
         </Route>
-      </Switch>
+            </Switch>
+        )}
+
     </div>
   );
 }
