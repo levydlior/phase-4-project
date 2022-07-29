@@ -12,12 +12,9 @@ function MyCities() {
     });
   }, []);
 
-  
   const tilesList = myCities.map((city) => {
     return <Tile city={city} />;
   });
-
-
 
   return <div id="my-cities-page">{tilesList}</div>;
 }
