@@ -35,6 +35,7 @@ function App() {
       if (r.ok) {
         setLoggedUser(null);
         setResponseFromAccountOrLogged(false);
+        history.push('/')
       }
     });
   }

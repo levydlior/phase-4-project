@@ -18,7 +18,7 @@ function MainContent() {
     }
 
   const renderWeather = hasCity ? <WeatherComponent weatherReport={weather}/> : null
-  
+
   return (
     <main id='main-page-main'>
       <h2>MainContent</h2>
