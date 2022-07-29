@@ -13,7 +13,7 @@ function MyCities() {
   }, []);
 
   const tilesList = myCities.map((city) => {
-    return <Tile cityName={city.name} cityId={city.id}/>;
+    return <Tile cityName={city.name} cityId={city.id} />;
   });
 
   // useEffect(() => {
@@ -25,8 +25,7 @@ function MyCities() {
   //     })
   // },[])
 
-  return <div id="my-cities-page">
-    {tilesList}</div>;
+  return <div id="my-cities-page">{tilesList}</div>;
 }
 
 export default MyCities;

@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 function Tile() {
-  return (
-    <div className='tile'>Tile</div>
-  )
+  return <div className="tile">Tile</div>;
 }
 
-export default Tile
+export default Tile;
