@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+ 
 
 function Tile({ city }) {
   const [fetchedCity, setFetchedCity] = useState({});
@@ -7,7 +8,7 @@ function Tile({ city }) {
 
   useEffect(() => {
     fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&APPID=940fcac699ff529fe9e0a4a0de433a1c`
+      `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&APPID=940fcac699ff529fe9e0a4a0de433a1c&units=imperial`
     )
       .then((r) => r.json())
       .then((weather) => {
@@ -22,6 +23,7 @@ function Tile({ city }) {
         <>
           <h2>{cityName}</h2>
           <p>current temp: {fetchedCity.main.temp}</p>
+          <p>{fetchedCity.sys.country}</p>
         </>
       ) : (
         <p>Loading!</p>
