@@ -8,7 +8,7 @@ import Paper from '@mui/material/Paper';
 
 
 
-function SearchComponent( {setCity, onCitySearch}) {
+function SearchComponent({ city, setCity, onCitySearch }) {
 
    const handleChange = (e) => {
        e.preventDefault()
@@ -25,7 +25,8 @@ function SearchComponent( {setCity, onCitySearch}) {
             <Grid item xs>
               <TextField
                 fullWidth
-                placeholder="Search by city or zip code"
+                value={city}
+                placeholder="Search by city or ZIP code"
                 onChange={handleChange}
                 InputProps={{
                     disableUnderline: true,

@@ -7,7 +7,7 @@ function MyCities() {
   useEffect(() => {
     fetch("/cities").then((r) => {
       if (r.ok) {
-        r.json().then((cities) => setMyCities(cities));
+        r.json().then(setMyCities);
       }
     });
   }, []);

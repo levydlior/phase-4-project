@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import SearchComponent from "./SearchComponent";
 import WeatherComponent from "./WeatherComponent";
 
@@ -15,6 +15,7 @@ function MainContent() {
         r.json().then((res) => {
           setWeather(res);
           setHasCity(true);
+          setCity("")
         });
       }
     });
@@ -28,8 +29,7 @@ function MainContent() {
 
   return (
     <main id="main-page-main">
-      <h2>MainContent</h2>
-      <SearchComponent setCity={setCity} onCitySearch={handleCitySearch} />
+      <SearchComponent city={city} setCity={setCity} onCitySearch={handleCitySearch} />
       {renderWeather}
     </main>
   );
