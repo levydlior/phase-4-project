@@ -9,7 +9,7 @@ function MainContent() {
 
   const handleCitySearch = () => {
     fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${key}=imperial`
+      `https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=940fcac699ff529fe9e0a4a0de433a1c&units=imperial`
     ).then((r) => {
       if (r.ok) {
         r.json().then((res) => {

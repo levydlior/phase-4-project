@@ -12,7 +12,7 @@ function WeatherComponent({ weatherReport }) {
 
 
     return (
-      <Container component="main" maxWidth="xs">
+      <Container component="main" maxWidth="sm">
         <CardContent sx={{
             marginTop: 8,
             display: 'flex',
