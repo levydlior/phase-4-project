@@ -27,8 +27,8 @@ function Login({ onCreateOrLog, responseFromAccountOrLogged }) {
     fetch("/login", {
       method: "POST",
       headers: {
-        "content-type": "application/json",
-        accept: "application/json",
+        "Content-Type": "application/json",
+        "accept": "application/json",
       },
       body: JSON.stringify(loginAccount),
     }).then((r) => {
