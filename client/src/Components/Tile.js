@@ -1,24 +1,26 @@
 import React, { useEffect, useState } from "react";
 
-
 function Tile({ city }) {
   const [fetchedCity, setFetchedCity] = useState({});
   const [loaded, setLoaded] = useState(false);
   const cityName = city.name;
 
-  
-const MY_KEY = process.env.REACT_APP_API_KEY
+  const MY_KEY = process.env.REACT_APP_API_KEY;
 
   useEffect(() => {
     fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&APPID=${apikey}`
-    )
-      .then((r) => r.json())
-      .then((weather) => {
-        setFetchedCity(weather);
-        setLoaded(true);
-      });
+      `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&APPID=${key}=imperial`
+    ).then((r) => {
+      if (r.ok) {
+        r.json().then((weather) => {
+          setFetchedCity(weather);
+          setLoaded(true);
+        });
+      }
+    });
   }, []);
+
+  console.log(MY_KEY)
 
   return (
     <div className="tile">

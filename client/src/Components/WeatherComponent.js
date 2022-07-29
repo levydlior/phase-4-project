@@ -10,7 +10,6 @@ function WeatherComponent({ weatherReport }) {
 
     const {coord, weather, main, wind, sys, name} = weatherReport
 
-    console.log(weather.main)
 
     return (
       <Container component="main" maxWidth="xs">
