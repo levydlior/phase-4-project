@@ -21,7 +21,7 @@ function MainContent() {
       <h2>MainContent</h2>
       
        <SearchComponent setCity={setCity} onCitySearch={handleCitySearch}/>
-    </div>
+    </main>
 
    
     
