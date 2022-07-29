@@ -8,11 +8,13 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 
+const initialForm = {
+  username: "",
+  password: "",
+}
+
 function CreateAnAccount({ onCreateOrLog, responseFromAccountOrLogged }) {
-  const [createAccountForm, setCreateAccountForm] = useState({
-    username: "",
-    password: "",
-  });
+  const [createAccountForm, setCreateAccountForm] = useState(initialForm);
   const [errors, setErrors] = useState(null);
 
   function handleCreateChange(e) {
@@ -27,20 +29,20 @@ function CreateAnAccount({ onCreateOrLog, responseFromAccountOrLogged }) {
     fetch("/users", {
       method: "POST",
       headers: {
-        "content-type": "application/json",
-        "accept": "application/json",
+        "Content-Type": "application/json",
+        "Accept": "application/json",
       },
       body: JSON.stringify(createAccountForm),
     }).then((r) => {
       if (r.ok) {
         r.json().then((user) => {
           setErrors(null);
-          setCreateAccountForm({ username: "", password: "" });
+          setCreateAccountForm(initialForm);
           onCreateOrLog(user);
         });
       } else {
         r.json().then((err) => {
-          setCreateAccountForm({ username: "", password: "" });
+          setCreateAccountForm(initialForm);
           setErrors(err);
         });
       }

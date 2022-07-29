@@ -10,7 +10,7 @@ function Header({ loggedUser, onLogOut }) {
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1nyV8qa04YxsdlaBSIjKF8vVC7vWcm5cM7w&usqp=CAU"
           alt="Website logo"
         />
-        <h1>Website title</h1>
+        <h1>sxc flatweather app</h1>
       </div>
       <NavBar loggedUser={loggedUser} onLogOut={onLogOut} />
     </header>
