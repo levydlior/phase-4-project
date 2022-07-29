@@ -8,12 +8,16 @@ import Paper from '@mui/material/Paper';
 
 
 
-function SearchComponent() {
+function SearchComponent( {setCity, onCitySearch}) {
 
+   const handleChange = (e) => {
+       e.preventDefault()
+       setCity(e.target.value)
+   }
 
   return (
-    <Paper sx={{ maxWidth: 936, margin: 'auto', overflow: 'hidden' }}>
-    <Toolbar>
+    <Paper sx={{ maxWidth: 700, margin: 'auto', overflow: 'hidden' }}>
+        <Toolbar type="form" >
           <Grid container spacing={2} alignItems="center">
             <Grid item>
               <SearchIcon color="inherit" sx={{ display: 'block' }} />
@@ -22,21 +26,22 @@ function SearchComponent() {
               <TextField
                 fullWidth
                 placeholder="Search by city or zip code"
+                onChange={handleChange}
                 InputProps={{
-                  disableUnderline: true,
-                  sx: { fontSize: 'default' },
+                    disableUnderline: true,
+                    sx: { fontSize: 'default' },
                 }}
                 variant="standard"
-              />
+            />
             </Grid>
             <Grid item>
-              <Button variant="contained" sx={{ mr: 1 }}>
+              <Button onClick={onCitySearch} variant="contained" sx={{ mr: 1 }}>
                 Search
               </Button>
             </Grid>
           </Grid>
         </Toolbar>
-        </Paper>
+    </Paper>
 
   )}
 
