@@ -7,7 +7,7 @@ function Tile({ city }) {
 
   useEffect(() => {
     fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&APPID=940fcac699ff529fe9e0a4a0de433a1c`
+      `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&APPID=${apikey}`
     )
       .then((r) => r.json())
       .then((weather) => {
