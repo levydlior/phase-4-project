@@ -5,16 +5,15 @@ function MainContent() {
   const [city, setCity] = useState([])
   const [weather, setWeather] = useState([])
 
-  console.log(city)
 
   const handleCitySearch = () => {
     fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=940fcac699ff529fe9e0a4a0de433a1c`
     )
       .then(res => res.json())
-      .then(res => console.log(res))
+      .then(res => setWeather(res))
     }
-
+console.log(weather)
 
   return (
     <main id='main-page-main'>
