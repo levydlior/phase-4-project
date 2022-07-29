@@ -1,4 +1,12 @@
 import React, { useState } from "react";
+import Button from '@mui/material/Button';
+import CssBaseline from '@mui/material/CssBaseline';
+import TextField from '@mui/material/TextField';
+import Link from '@mui/material/Link';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
 
 function Login({ onCreateOrLog, responseFromAccountOrLogged }) {
   const [loginAccount, setLoginAccount] = useState({
@@ -40,33 +48,68 @@ function Login({ onCreateOrLog, responseFromAccountOrLogged }) {
   }
 
   return (
-    <div>
+    <Container component="main" maxWidth="xs">
+      <CssBaseline />
+      <Box sx={{
+            marginTop: 8,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }} >
       {!responseFromAccountOrLogged ? (
         <>
-          <h2>Login:</h2>
-          <form onSubmit={handleLoginSubmit}>
-            <input
+          <Typography component="h1" variant="h5">
+            Sign In:
+          </Typography>
+          
+          <Box component='form' onSubmit={handleLoginSubmit}>
+            <TextField
+              margin="normal"
               name="username"
               type="text"
+              label="Username"
               required
+              fullWidth
               value={loginAccount.username}
               onChange={handleLoginChange}
             />
-            <input
+            <TextField
+              margin="normal"
               name="password"
               type="password"
+              label="Password"
               required
+              fullWidth
               value={loginAccount.password}
               onChange={handleLoginChange}
             />
             {errors ? <p>{errors.error}</p> : null}
-            <input type="submit" />
-          </form>
+            <Button 
+            type="submit" 
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 2 }}
+            >Sign In</Button>
+            <Grid item xs>
+                <Link href="#" variant="body2">
+                  Forgot password?
+                </Link>
+              </Grid>
+            <Grid container>
+              <Grid item>
+                <Link href="/create-account" variant="body2">
+                  {"Dont' have an account? Sign Up"}
+                </Link>
+              </Grid>
+
+            </Grid>
+          </Box>
         </>
       ) : (
         <h2>Welcome!</h2>
       )}
-    </div>
+      </Box>
+    </Container>
   );
 }
 

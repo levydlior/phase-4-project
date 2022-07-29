@@ -1,8 +1,14 @@
 import React from 'react'
+import SearchComponent from './SearchComponent'
 
 function MainContent() {
   return (
-    <div>MainContent</div>
+    <div>
+      <h2>MainContent</h2>
+       <SearchComponent />
+    </div>
+   
+    
   )
 }
 
