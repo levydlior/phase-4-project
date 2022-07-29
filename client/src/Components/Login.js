@@ -8,6 +8,11 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 
+const initialForm = {
+  username: "",
+  password: "",
+}
+
 function Login({ onCreateOrLog, responseFromAccountOrLogged }) {
   const [loginAccount, setLoginAccount] = useState({
     username: "",
@@ -35,12 +40,12 @@ function Login({ onCreateOrLog, responseFromAccountOrLogged }) {
       if (r.ok) {
         r.json().then((user) => {
           setErrors(null);
-          setLoginAccount({ username: "", password: "" });
+          setLoginAccount(initialForm);
           onCreateOrLog(user);
         });
       } else {
         r.json().then((err) => {
-          setLoginAccount({ username: "", password: "" });
+          setLoginAccount(initialForm);
           setErrors(err);
         });
       }
@@ -62,7 +67,7 @@ function Login({ onCreateOrLog, responseFromAccountOrLogged }) {
             Sign In:
           </Typography>
           
-          <Box component='form' onSubmit={handleLoginSubmit}>
+          <Box component='form' >
             <TextField
               margin="normal"
               name="username"
@@ -85,7 +90,7 @@ function Login({ onCreateOrLog, responseFromAccountOrLogged }) {
             />
             {errors ? <p>{errors.error}</p> : null}
             <Button 
-            type="submit" 
+            onClick={handleLoginSubmit}
             fullWidth
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
@@ -98,7 +103,7 @@ function Login({ onCreateOrLog, responseFromAccountOrLogged }) {
             <Grid container>
               <Grid item>
                 <Link href="/create-account" variant="body2">
-                  {"Dont' have an account? Sign Up"}
+                  {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
 
