@@ -10,6 +10,8 @@ function WeatherComponent({ weatherReport }) {
 
     const {coord, weather, main, wind, sys, name} = weatherReport
 
+    console.log(weather.main)
+
     return (
       <Container component="main" maxWidth="xs">
         <CardContent sx={{
@@ -20,34 +22,34 @@ function WeatherComponent({ weatherReport }) {
           }}>
             <Box p={1}>
               <Typography variant="h2" color="textPrimary">
-                {name}, {}
+                {name}, {sys.country}
               </Typography>
             </Box>
             <Box p={1}>
               <Typography variant="h4" color="textPrimary">
-                Temp: {}
+                Temp: {main.temp}
                 <span>&#176;</span>
                 {"F"}
               </Typography>
             </Box>
             <Box p={1}>
               <Typography variant="h5" color="textPrimary">
-               {}
+               {weather[0].main}
               </Typography>
             </Box>
             <Box p={1}>
               <Typography variant="h6" color="textPrimary">
-                Humidity: {} %
+                Humidity: {main.humidity} %
               </Typography>
             </Box>
             <Box p={1}>
               <Typography variant="h6" color="textPrimary">
-                pressure: {} pa
+                pressure: {main.pressure} pa
               </Typography>
             </Box>
             <Box p={1}>
               <Typography variant="h6" color="textPrimary">
-                wind: {} mp/h
+                wind: {wind.speed} mp/h
               </Typography>
             </Box>
 
