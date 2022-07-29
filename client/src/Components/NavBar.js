@@ -12,6 +12,9 @@ function NavBar({loggedUser, onLogOut}) {
           <NavLink exact to="/">
             Home
           </NavLink>
+          <NavLink exact to="/my-cities">
+            My Cities
+          </NavLink>
           <NavLink onClick={onLogOut} to="/">
             Logout
           </NavLink>
