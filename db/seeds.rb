@@ -16,5 +16,22 @@ User.create(username: "lior", password: "lior")
 User.create(username: "shane", password: "shane")
 
 
+
+Tile.create!(user_id: 1, city_id: 1)
+Tile.create!(user_id: 1, city_id: 2)
+Tile.create!(user_id: 1, city_id: 3)
+Tile.create!(user_id: 1, city_id: 4)
+
+Tile.create!(user_id: 2, city_id: 1)
+Tile.create!(user_id: 2, city_id: 2)
+Tile.create!(user_id: 2, city_id: 3)
+Tile.create!(user_id: 2, city_id: 4)
+
+
+Tile.create!(user_id: 3, city_id: 1)
+Tile.create!(user_id: 3, city_id: 2)
+Tile.create!(user_id: 3, city_id: 3)
+Tile.create!(user_id: 3, city_id: 4)
+
 puts "Done seeding"
 
