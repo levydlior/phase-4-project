@@ -17,10 +17,12 @@ function MainContent() {
 
 
   return (
-    <div>
+    <main id='main-page-main'>
       <h2>MainContent</h2>
+      
        <SearchComponent setCity={setCity} onCitySearch={handleCitySearch}/>
     </div>
+
    
     
   )

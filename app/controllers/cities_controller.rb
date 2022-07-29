@@ -1,9 +1,11 @@
 class CitiesController < ApplicationController
-  skip_before_action :authorize, only: [:index, :show, :create, :destory]
+  
 
   # GET /cities
   def index
-    cities = City.all
+    
+    user = User.find(session[:user_id])
+    cities = user.cities
 
     render json: cities
   end
