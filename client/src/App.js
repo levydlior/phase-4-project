@@ -58,12 +58,6 @@ function App() {
         <nav>
           {!loggedUser ? (
             <>
-              <NavLink exact to="/">
-                Create an account
-              </NavLink>
-              <NavLink exact to="/login">
-                Login
-              </NavLink>
             </>
           ) : (
             <>
