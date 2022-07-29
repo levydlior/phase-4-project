@@ -20,13 +20,13 @@ function WeatherComponent({ weatherReport }) {
             alignItems: 'center',
           }}>
             <Box p={1}>
-              <Typography variant="h2" color="textPrimary">
+              <Typography variant="h4" color="textPrimary">
                 {name}, {sys.country}
               </Typography>
             </Box>
             <Box p={1}>
-              <Typography variant="h4" color="textPrimary">
-                Temp: {main.temp}
+              <Typography variant="h2" color="textPrimary">
+                {main.temp}
                 <span>&#176;</span>
                 {"F"}
               </Typography>
@@ -37,17 +37,22 @@ function WeatherComponent({ weatherReport }) {
               </Typography>
             </Box>
             <Box p={1}>
-              <Typography variant="h6" color="textPrimary">
+              <Typography variant="h5" color="textPrimary">
+               H:{main.temp_max}<span>&#176;</span> L:{main.temp_min}<span>&#176;</span>
+              </Typography>
+            </Box>
+            <Box p={1}>
+              <Typography variant="h7" color="textPrimary">
                 Humidity: {main.humidity} %
               </Typography>
             </Box>
             <Box p={1}>
-              <Typography variant="h6" color="textPrimary">
+              <Typography variant="h7" color="textPrimary">
                 pressure: {main.pressure} pa
               </Typography>
             </Box>
             <Box p={1}>
-              <Typography variant="h6" color="textPrimary">
+              <Typography variant="h7" color="textPrimary">
                 wind: {wind.speed} mp/h
               </Typography>
             </Box>
