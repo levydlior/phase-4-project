@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from "react";
 
+
 function Tile({ city }) {
   const [fetchedCity, setFetchedCity] = useState({});
   const [loaded, setLoaded] = useState(false);
   const cityName = city.name;
+
+  
+const MY_KEY = process.env.REACT_APP_API_KEY
 
   useEffect(() => {
     fetch(
