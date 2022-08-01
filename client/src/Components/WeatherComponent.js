@@ -25,6 +25,12 @@ function WeatherComponent({ weatherReport, myCities, onLikeOrUnlike }) {
     return false;
   }
 
+
+const date = new Date(dt*1000-(timezone*1000)); // minus 
+const date1= new Date(dt*1000+(timezone*1000)).toLocaleDateString(); // plus
+
+console.log(date1)
+
   isInMyCities();
 
   function handleLikeClick() {
@@ -42,6 +48,7 @@ function WeatherComponent({ weatherReport, myCities, onLikeOrUnlike }) {
       }
     });
   }
+
 
   return (
     <Container component="main" maxWidth="sm">
@@ -62,54 +69,52 @@ function WeatherComponent({ weatherReport, myCities, onLikeOrUnlike }) {
               </IconButton>
             )
           }
-          subheader="Today's Date"
-        />
-        <CardContent
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
-          <Box p={1}>
-            <Typography variant="h4" color="textPrimary">
-              {name}, {sys.country}
-            </Typography>
-          </Box>
-          <Box p={1}>
-            <Typography variant="h2" color="textPrimary">
-              {main.temp}
-              <span>&#176;</span>
-              {"F"}
-            </Typography>
-          </Box>
-          <Box p={1}>
-            <Typography variant="h5" color="textPrimary">
-              {weather[0].main}
-            </Typography>
-          </Box>
-          <Box p={1}>
-            <Typography variant="h5" color="textPrimary">
-              H:{main.temp_max}
-              <span>&#176;</span> L:{main.temp_min}
-              <span>&#176;</span>
-            </Typography>
-          </Box>
-          <Box p={1}>
-            <Typography variant="h7" color="textPrimary">
-              Humidity: {main.humidity} %
-            </Typography>
-          </Box>
-          <Box p={1}>
-            <Typography variant="h7" color="textPrimary">
-              pressure: {main.pressure} pa
-            </Typography>
-          </Box>
-          <Box p={1}>
-            <Typography variant="h7" color="textPrimary">
-              wind: {wind.speed} mp/h
-            </Typography>
-          </Box>
+
+          subheader={date1}
+          />
+        <CardContent sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}>
+            <Box p={1}>
+              <Typography variant="h4" color="textPrimary">
+                {name}, {sys.country}
+              </Typography>
+            </Box>
+            <Box p={1}>
+              <Typography variant="h2" color="textPrimary">
+                {main.temp}
+                <span>&#176;</span>
+                {"F"}
+              </Typography>
+            </Box>
+            <Box p={1}>
+              <Typography variant="h5" color="textPrimary">
+               {weather[0].main}
+              </Typography>
+            </Box>
+            <Box p={1}>
+              <Typography variant="h5" color="textPrimary">
+               H:{main.temp_max}<span>&#176;</span> L:{main.temp_min}<span>&#176;</span>
+              </Typography>
+            </Box>
+            <Box p={1}>
+              <Typography variant="h7" color="textPrimary">
+                Humidity: {main.humidity} %
+              </Typography>
+            </Box>
+            <Box p={1}>
+              <Typography variant="h7" color="textPrimary">
+                pressure: {main.pressure} pa
+              </Typography>
+            </Box>
+            <Box p={1}>
+              <Typography variant="h7" color="textPrimary">
+                wind: {wind.speed} mp/h
+              </Typography>
+            </Box>
+
         </CardContent>
       </Card>
     </Container>
