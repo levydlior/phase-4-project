@@ -24,11 +24,6 @@ const style = {
   p: 4,
 };
 
-
-
-
-
-
 function Tile({ city, onUnlike }) {
   const [fetchedCity, setFetchedCity] = useState({});
   const [loaded, setLoaded] = useState(false);
@@ -91,10 +86,7 @@ function Tile({ city, onUnlike }) {
           <Typography variant="body2">H:{fetchedCity.main.temp_max}<span>&#176;</span> L:{fetchedCity.temp_min}<span>&#176;</span></Typography>
           <Typography variant="body2">{fetchedCity.main.temp}</Typography>
           </CardContent>
-          <h2>{cityName}</h2>
-          <p>current temp: {fetchedCity.main.temp}</p>
-              <Button  onClick={handleUnlike}  variant="contained">Remove</Button>
-
+          <Button  onClick={handleUnlike}  variant="contained">Remove</Button>
         </>
       ) : (
         <p>Loading!</p>
