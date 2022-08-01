@@ -16,9 +16,10 @@ function WeatherComponent({ weatherReport }) {
 
     const {dt, timezone, weather, main, wind, sys, name} = weatherReport
 
-console.log(new Date(dt*1000-(timezone*1000))); // minus 
-console.log(new Date(dt*1000+(timezone*1000))); // plus
+const date = new Date(dt*1000-(timezone*1000)); // minus 
+const date1= new Date(dt*1000+(timezone*1000)).toLocaleDateString(); // plus
 
+console.log(date1)
 
     return (
       <Container component="main" maxWidth="sm">
@@ -31,8 +32,8 @@ console.log(new Date(dt*1000+(timezone*1000))); // plus
               <FavoriteIcon />
             </IconButton>
           }
-          subheader="Today's Date"
-          /> 
+          subheader={date1}
+          />
         <CardContent sx={{
             display: 'flex',
             flexDirection: 'column',
