@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { IconButton } from "@mui/material";
-import FavoriteIcon from "@mui/icons-material/Favorite";
+import Button from '@mui/material/Button';
+
 
 
 function Tile({ city, onUnlike }) {
@@ -41,9 +41,7 @@ function Tile({ city, onUnlike }) {
         <>
           <h2>{cityName}</h2>
           <p>current temp: {fetchedCity.main.temp}</p>
-          <IconButton onClick={handleUnlike} aria-label="settings">
-                <FavoriteIcon className= "heart-icon" sx={{ color: "red" }} />
-              </IconButton>
+              <Button  onClick={handleUnlike}  variant="contained">Remove</Button>
         </>
       ) : (
         <p>Loading!</p>
