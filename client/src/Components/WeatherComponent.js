@@ -30,7 +30,6 @@ function WeatherComponent({ weatherReport, myCities, onLikeOrUnlike }) {
 const date = new Date(dt*1000-(timezone*1000)); // minus 
 const date1= new Date(dt*1000+(timezone*1000)).toLocaleDateString(); // plus
 
-console.log(date1)
 
   isInMyCities();
 
