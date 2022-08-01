@@ -43,7 +43,7 @@ function WeatherComponent({ weatherReport, myCities, onLikeOrUnlike }) {
       }
     });
   }
-console.log(cityId)
+  
   function handleUnlike() {
     fetch(`/tiles/${cityId}`, {
       method: "DELETE"
