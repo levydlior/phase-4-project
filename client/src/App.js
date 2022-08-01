@@ -21,17 +21,20 @@ function App() {
         r.json().then((user) => {
           setLoggedUser(user);
           setAuthorize(true);
-          fetch("/cities").then((r) => {
-            if (r.ok) {
-              r.json().then((likeCities) => setMyCities(likeCities));
-            }
-          });
         });
       } else {
         setAuthorize(true);
       }
     });
   }, []);
+
+  useEffect(() => {
+    fetch("/cities").then((r) => {
+      if (r.ok) {
+        r.json().then((likeCities) => setMyCities(likeCities));
+      }
+    });
+  }, [loggedUser]);
 
   function handleLogOut(e) {
     e.preventDefault();
@@ -68,7 +71,6 @@ function App() {
     }
   }
 
-
   if (!authorize) {
     return <div></div>;
   }
@@ -85,7 +87,7 @@ function App() {
             />
           </Route>
           <Route exact path="/my-cities">
-            <MyCities myCities={myCities} onUnlike={handleLikeOrUnlike}/>
+            <MyCities myCities={myCities} onUnlike={handleLikeOrUnlike} />
           </Route>
           <Route exact path="*">
             <h2>404 Error Not Found</h2>
