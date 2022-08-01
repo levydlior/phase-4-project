@@ -13,10 +13,12 @@ class TilesController < ApplicationController
         city = tile.city
         tile.destroy
 
+       
+        render json: city
+
         if city.tiles.length == 0
             city.destroy
         end
-        render json: city
     end
      
     private
