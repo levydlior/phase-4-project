@@ -13,6 +13,8 @@ function App() {
   const [responseFromAccountOrLogged, setResponseFromAccountOrLogged] =
     useState(false);
   const [authorize, setAuthorize] = useState(false);
+  const [myCities, setMyCities] = useState([]);
+
 
   useEffect(() => {
     fetch("/users/show").then((r) => {
@@ -20,12 +22,21 @@ function App() {
         r.json().then((user) => {
           setLoggedUser(user);
           setAuthorize(true);
+          fetch("/cities").then((r) => {
+            if (r.ok) {
+              r.json().then(setMyCities);
+            }
+          });
         });
       } else {
         setAuthorize(true);
       }
     });
   }, []);
+
+ 
+
+
 
   function handleLogOut(e) {
     e.preventDefault();
@@ -64,7 +75,7 @@ function App() {
             <MainContent />
           </Route>
           <Route exact path="/my-cities">
-            <MyCities />
+            <MyCities myCities={myCities}/>
           </Route>
           <Route exact path="*">
             <h2>404 Error Not Found</h2>

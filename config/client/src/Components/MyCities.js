@@ -1,16 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Tile from "./Tile";
 
-function MyCities() {
-  const [myCities, setMyCities] = useState([]);
+function MyCities({myCities}) {
 
-  useEffect(() => {
-    fetch("/cities").then((r) => {
-      if (r.ok) {
-        r.json().then(setMyCities);
-      }
-    });
-  }, []);
 
   const tilesList = myCities.map((city) => {
     return <Tile city={city} />;
