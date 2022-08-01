@@ -15,11 +15,12 @@ function WeatherComponent({ weatherReport, myCities, onLikeOrUnlike }) {
   // console.log(new Date(dt * 1000 - timezone * 1000)); // minus
   // console.log(new Date(dt * 1000 + timezone * 1000)); // plus
   let inMyCities = false;
-
+  let cityId = null
   function isInMyCities() {
     for (let i = 0; i < myCities.length; i++) {
       if (name === myCities[i].name) {
         inMyCities = true;
+        cityId = myCities[i].id
       }
     }
     return false;
@@ -42,6 +43,16 @@ function WeatherComponent({ weatherReport, myCities, onLikeOrUnlike }) {
       }
     });
   }
+console.log(cityId)
+  function handleUnlike() {
+    fetch(`/tiles/${cityId}`, {
+      method: "DELETE"
+    }).then((r) => {
+      if (r.ok) {
+        r.json().then((removedTile) => onLikeOrUnlike(removedTile));
+      }
+    });
+  }
 
   return (
     <Container component="main" maxWidth="sm">
@@ -57,7 +68,7 @@ function WeatherComponent({ weatherReport, myCities, onLikeOrUnlike }) {
                 <FavoriteIcon sx={{ color: "gray" }} />
               </IconButton>
             ) : (
-              <IconButton aria-label="settings">
+              <IconButton onClick={handleUnlike} aria-label="settings">
                 <FavoriteIcon sx={{ color: "red" }} />
               </IconButton>
             )
