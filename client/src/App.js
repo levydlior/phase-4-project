@@ -72,7 +72,7 @@ function App() {
       {loggedUser ? (
         <Switch>
           <Route exact path="/">
-            <MainContent />
+            <MainContent myCities={myCities}/>
           </Route>
           <Route exact path="/my-cities">
             <MyCities myCities={myCities}/>
