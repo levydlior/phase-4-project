@@ -5,11 +5,10 @@ function Tile({ city }) {
   const [loaded, setLoaded] = useState(false);
   const cityName = city.name;
 
-  const MY_KEY = process.env.REACT_APP_API_KEY;
 
   useEffect(() => {
     fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&APPID=940fcac699ff529fe9e0a4a0de433a1c&units=imperial`
+      `${process.env.REACT_APP_API_URL}/weather?q=${cityName}&APPID=${process.env.REACT_APP_API_KEY}&units=imperial`
     ).then((r) => {
       if (r.ok) {
         r.json().then((weather) => {
@@ -20,7 +19,6 @@ function Tile({ city }) {
     });
   }, []);
 
-  console.log(MY_KEY)
 
   return (
     <div className="tile">
