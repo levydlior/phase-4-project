@@ -3,7 +3,7 @@ import SearchComponent from "./SearchComponent";
 import WeatherComponent from "./WeatherComponent";
 
 
-function MainContent({myCities}) {
+function MainContent({myCities, onLikeOrUnlike}) {
   const [city, setCity] = useState([]);
   const [weather, setWeather] = useState([]);
   const [hasCity, setHasCity] = useState(false);
@@ -24,7 +24,7 @@ function MainContent({myCities}) {
   };
 
   const renderWeather = hasCity ? (
-    <WeatherComponent weatherReport={weather} myCities={myCities}/>
+    <WeatherComponent weatherReport={weather} myCities={myCities} onLikeOrUnlike={onLikeOrUnlike}/>
   ) : (
     <></>
   );

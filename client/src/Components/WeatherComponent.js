@@ -10,7 +10,7 @@ import { CardActions } from "@mui/material";
 import { CardContent } from "@mui/material";
 import Container from "@mui/material/Container";
 
-function WeatherComponent({ weatherReport, myCities }) {
+function WeatherComponent({ weatherReport, myCities, onLikeOrUnlike }) {
   const { dt, timezone, weather, main, wind, sys, name } = weatherReport;
   // console.log(new Date(dt * 1000 - timezone * 1000)); // minus
   // console.log(new Date(dt * 1000 + timezone * 1000)); // plus
@@ -27,10 +27,21 @@ function WeatherComponent({ weatherReport, myCities }) {
 
   isInMyCities();
 
-function handleLikeClick(){
-  
-}
-
+  function handleLikeClick() {
+    fetch("/tiles", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        name: name,
+      }),
+    }).then((r) => {
+      if (r.ok) {
+        r.json().then((newLikedCity) => onLikeOrUnlike(newLikedCity));
+      }
+    });
+  }
 
   return (
     <Container component="main" maxWidth="sm">

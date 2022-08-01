@@ -2,7 +2,7 @@ class TilesController < ApplicationController
 
 
     def create
-        city = City.find_find_or_create_by(name: tile_params)
+        city = City.find_or_create_by(tile_params)
         tile = Tile.create!(user_id: current_user, city_id: city.id)
         render json: tile.city, status: :created
     end
@@ -28,7 +28,7 @@ class TilesController < ApplicationController
     end
 
     def tile_params
-        params.permit(:city_name)
+        params.permit(:name)
     end
     
 end
