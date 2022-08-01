@@ -3,9 +3,6 @@ import SearchComponent from "./SearchComponent";
 import WeatherComponent from "./WeatherComponent";
 
 
-
-
-
 function MainContent() {
   const [city, setCity] = useState([]);
   const [weather, setWeather] = useState([]);

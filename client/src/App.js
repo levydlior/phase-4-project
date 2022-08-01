@@ -79,7 +79,7 @@ function App() {
             />
           </Route>
           <Route exact path="/">
-            <CreateAnAccount
+            <Login
               onCreateOrLog={handleCreateOrLog}
               responseFromAccountOrLogged={responseFromAccountOrLogged}
             />
