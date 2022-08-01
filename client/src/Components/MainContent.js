@@ -2,14 +2,20 @@ import React, { useState } from "react";
 import SearchComponent from "./SearchComponent";
 import WeatherComponent from "./WeatherComponent";
 
+
+
+
+
 function MainContent() {
   const [city, setCity] = useState([]);
   const [weather, setWeather] = useState([]);
   const [hasCity, setHasCity] = useState(false);
 
+  console.log(process.env.REACT_APP_API_KEY)
+
   const handleCitySearch = () => {
     fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=940fcac699ff529fe9e0a4a0de433a1c&units=imperial`
+      `${process.env.REACT_APP_API_URL}/weather?q=${city}&APPID=${process.env.REACT_APP_API_KEY}&units=imperial`
     ).then((r) => {
       if (r.ok) {
         r.json().then((res) => {
