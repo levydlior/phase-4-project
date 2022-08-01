@@ -68,7 +68,6 @@ function App() {
     }
   }
 
-  console.log(myCities)
 
   if (!authorize) {
     return <div></div>;
@@ -86,7 +85,7 @@ function App() {
             />
           </Route>
           <Route exact path="/my-cities">
-            <MyCities myCities={myCities} />
+            <MyCities myCities={myCities} onUnlike={handleLikeOrUnlike}/>
           </Route>
           <Route exact path="*">
             <h2>404 Error Not Found</h2>

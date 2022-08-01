@@ -49,7 +49,7 @@ console.log(date1)
       }
     });
   }
-console.log(cityId)
+  
   function handleUnlike() {
     fetch(`/tiles/${cityId}`, {
       method: "DELETE"
