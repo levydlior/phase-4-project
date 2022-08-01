@@ -2,19 +2,38 @@
 import React from "react";
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import Card from '@mui/material/Card'
+import { CardHeader } from "@mui/material";
+import { IconButton, IconButtonProps } from "@mui/material";
+import FavoriteIcon from '@mui/icons-material/Favorite'
+import { CardActions } from "@mui/material";
+
 import {CardContent} from "@mui/material";
 import Container from '@mui/material/Container';
 
 function WeatherComponent({ weatherReport }) {
   
 
-    const {coord, weather, main, wind, sys, name} = weatherReport
+    const {dt, timezone, weather, main, wind, sys, name} = weatherReport
+
+console.log(new Date(dt*1000-(timezone*1000))); // minus 
+console.log(new Date(dt*1000+(timezone*1000))); // plus
 
 
     return (
       <Container component="main" maxWidth="sm">
-        <CardContent sx={{
+        <Card sx={{
             marginTop: 8,
+          }}>
+          <CardHeader 
+           action={
+            <IconButton aria-label="settings">
+              <FavoriteIcon />
+            </IconButton>
+          }
+          subheader="Today's Date"
+          /> 
+        <CardContent sx={{
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
@@ -58,6 +77,7 @@ function WeatherComponent({ weatherReport }) {
             </Box>
 
         </CardContent>
+        </Card>
       </Container>
     )
 }
