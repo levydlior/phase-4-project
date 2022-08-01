@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+
 import { Card } from "@mui/material";
 import { CardContent } from "@mui/material";
 import { Button } from "@mui/material";
@@ -24,7 +25,12 @@ const style = {
 };
 
 
-function Tile({ city }) {
+import Button from '@mui/material/Button';
+
+
+
+
+function Tile({ city, onUnlike }) {
   const [fetchedCity, setFetchedCity] = useState({});
   const [loaded, setLoaded] = useState(false);
   const [open, setOpen] = useState(false);
@@ -46,11 +52,24 @@ function Tile({ city }) {
     });
   }, []);
 
+  
+  function handleUnlike(e) {
+    e.stopPropagation()
+    fetch(`/tiles/${city.id}`, {
+      method: "DELETE"
+    }).then((r) => {
+      if (r.ok) {
+        r.json().then((removedTile) => onUnlike(removedTile));
+      }
+    });
+  }
+
 
   return (
     <Card className="tile" sx={{maxWidth: 600, maxHeight: 200 }} onClick={handleOpen}>
       {loaded ? (
         <>
+
           {/* <CardMedia component="img"
           height="100%"
           width="100%"
@@ -71,6 +90,10 @@ function Tile({ city }) {
           <Typography variant="body2">H:{fetchedCity.main.temp_max}<span>&#176;</span> L:{fetchedCity.temp_min}<span>&#176;</span></Typography>
           <Typography variant="body2">{fetchedCity.main.temp}</Typography>
           </CardContent>
+          <h2>{cityName}</h2>
+          <p>current temp: {fetchedCity.main.temp}</p>
+              <Button  onClick={handleUnlike}  variant="contained">Remove</Button>
+
         </>
       ) : (
         <p>Loading!</p>

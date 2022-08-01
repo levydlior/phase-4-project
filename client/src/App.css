@@ -71,3 +71,7 @@ h1{
     cursor: pointer;
 
   }
+
+  .heart-icon:hover {
+    transform: scale(1.1);
+  }
