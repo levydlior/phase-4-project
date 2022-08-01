@@ -24,7 +24,7 @@ function App() {
           setAuthorize(true);
           fetch("/cities").then((r) => {
             if (r.ok) {
-              r.json().then(setMyCities);
+              r.json().then(likeCities => setMyCities(likeCities));
             }
           });
         });
