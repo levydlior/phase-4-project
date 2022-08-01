@@ -15,7 +15,6 @@ function App() {
   const [authorize, setAuthorize] = useState(false);
   const [myCities, setMyCities] = useState([]);
 
-
   useEffect(() => {
     fetch("/users/show").then((r) => {
       if (r.ok) {
@@ -24,7 +23,7 @@ function App() {
           setAuthorize(true);
           fetch("/cities").then((r) => {
             if (r.ok) {
-              r.json().then(likeCities => setMyCities(likeCities));
+              r.json().then((likeCities) => setMyCities(likeCities));
             }
           });
         });
@@ -34,10 +33,6 @@ function App() {
     });
   }, []);
 
- 
-
-
-
   function handleLogOut(e) {
     e.preventDefault();
     fetch("/logout", {
@@ -46,7 +41,7 @@ function App() {
       if (r.ok) {
         setLoggedUser(null);
         setResponseFromAccountOrLogged(false);
-        history.push('/')
+        history.push("/");
       }
     });
   }
@@ -62,20 +57,36 @@ function App() {
     }, 1500);
   }
 
+  function handleLikeOrUnlike(city) {
+    const existedCity = myCities.find((ct) => ct.name === city.name);
+
+    if (!existedCity) {
+      setMyCities([...myCities, city]);
+    } else {
+      const updatedMyCities = myCities.filter((ct) => ct.name !== city.name);
+      setMyCities(updatedMyCities);
+    }
+  }
+
+  console.log(myCities)
+
   if (!authorize) {
     return <div></div>;
   }
 
   return (
     <div>
-      <Header loggedUser={loggedUser} onLogOut={handleLogOut}/>
+      <Header loggedUser={loggedUser} onLogOut={handleLogOut} />
       {loggedUser ? (
         <Switch>
           <Route exact path="/">
-            <MainContent />
+            <MainContent
+              myCities={myCities}
+              onLikeOrUnlike={handleLikeOrUnlike}
+            />
           </Route>
           <Route exact path="/my-cities">
-            <MyCities myCities={myCities}/>
+            <MyCities myCities={myCities} />
           </Route>
           <Route exact path="*">
             <h2>404 Error Not Found</h2>

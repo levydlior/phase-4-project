@@ -1,37 +1,75 @@
-
 import React from "react";
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import Card from '@mui/material/Card'
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Card from "@mui/material/Card";
 import { CardHeader } from "@mui/material";
 import { IconButton, IconButtonProps } from "@mui/material";
-import FavoriteIcon from '@mui/icons-material/Favorite'
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import { CardActions } from "@mui/material";
 
-import {CardContent} from "@mui/material";
-import Container from '@mui/material/Container';
+import { CardContent } from "@mui/material";
+import Container from "@mui/material/Container";
 
-function WeatherComponent({ weatherReport }) {
-  
+function WeatherComponent({ weatherReport, myCities, onLikeOrUnlike }) {
+  const { dt, timezone, weather, main, wind, sys, name } = weatherReport;
+  // console.log(new Date(dt * 1000 - timezone * 1000)); // minus
+  // console.log(new Date(dt * 1000 + timezone * 1000)); // plus
+  let inMyCities = false;
 
-    const {dt, timezone, weather, main, wind, sys, name} = weatherReport
+  function isInMyCities() {
+    for (let i = 0; i < myCities.length; i++) {
+      if (name === myCities[i].name) {
+        inMyCities = true;
+      }
+    }
+    return false;
+  }
+
 
 const date = new Date(dt*1000-(timezone*1000)); // minus 
 const date1= new Date(dt*1000+(timezone*1000)).toLocaleDateString(); // plus
 
 console.log(date1)
 
-    return (
-      <Container component="main" maxWidth="sm">
-        <Card sx={{
-            marginTop: 8,
-          }}>
-          <CardHeader 
-           action={
-            <IconButton aria-label="settings">
-              <FavoriteIcon />
-            </IconButton>
+  isInMyCities();
+
+  function handleLikeClick() {
+    fetch("/tiles", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        name: name,
+      }),
+    }).then((r) => {
+      if (r.ok) {
+        r.json().then((newLikedCity) => onLikeOrUnlike(newLikedCity));
+      }
+    });
+  }
+
+
+  return (
+    <Container component="main" maxWidth="sm">
+      <Card
+        sx={{
+          marginTop: 8,
+        }}
+      >
+        <CardHeader
+          action={
+            !inMyCities ? (
+              <IconButton onClick={handleLikeClick} aria-label="settings">
+                <FavoriteIcon sx={{ color: "gray" }} />
+              </IconButton>
+            ) : (
+              <IconButton aria-label="settings">
+                <FavoriteIcon sx={{ color: "red" }} />
+              </IconButton>
+            )
           }
+
           subheader={date1}
           />
         <CardContent sx={{
@@ -78,9 +116,9 @@ console.log(date1)
             </Box>
 
         </CardContent>
-        </Card>
-      </Container>
-    )
+      </Card>
+    </Container>
+  );
 }
 
 export default WeatherComponent;

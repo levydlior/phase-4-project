@@ -5,7 +5,7 @@ function MyCities({myCities}) {
 
 
   const tilesList = myCities.map((city) => {
-    return <Tile city={city} />;
+    return <Tile city={city} key={city.name}/>;
   });
 
   return <div id="my-cities-page">{tilesList}</div>;
