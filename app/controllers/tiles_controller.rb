@@ -12,13 +12,16 @@ class TilesController < ApplicationController
         tile = Tile.find_by(user_id: current_user, city_id: params[:id])
         city = tile.city
         tile.destroy
-
+       
+        if city.tiles.length == 0
+            city.destroy
+        else
+            nil
+        end
        
         render json: city
 
-        if city.tiles.length == 0
-            city.destroy
-        end
+      
     end
      
     private
