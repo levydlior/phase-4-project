@@ -15,17 +15,21 @@ function WeatherComponent({ weatherReport, myCities }) {
   // console.log(new Date(dt * 1000 - timezone * 1000)); // minus
   // console.log(new Date(dt * 1000 + timezone * 1000)); // plus
   let inMyCities = false;
-  
+
   function isInMyCities() {
     for (let i = 0; i < myCities.length; i++) {
       if (name === myCities[i].name) {
         inMyCities = true;
       }
     }
-    return false
+    return false;
   }
 
-  isInMyCities()
+  isInMyCities();
+
+function handleLikeClick(){
+  
+}
 
 
   return (
@@ -38,7 +42,7 @@ function WeatherComponent({ weatherReport, myCities }) {
         <CardHeader
           action={
             !inMyCities ? (
-              <IconButton aria-label="settings">
+              <IconButton onClick={handleLikeClick} aria-label="settings">
                 <FavoriteIcon sx={{ color: "gray" }} />
               </IconButton>
             ) : (

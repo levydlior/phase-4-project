@@ -16,6 +16,10 @@ function App() {
   const [myCities, setMyCities] = useState([]);
 
 
+  function handleLikeOrUnlike(){
+    
+  }
+
   useEffect(() => {
     fetch("/users/show").then((r) => {
       if (r.ok) {
