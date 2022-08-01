@@ -11,14 +11,12 @@ class TilesController < ApplicationController
     def destroy
         tile = Tile.find_by(user_id: current_user, city_id: params[:id])
         city = tile.city
-
-        city.destroy
+        tile.destroy
 
         if city.tiles.length == 0
             city.destroy
-          end
-      
-          render json: city
+        end
+        render json: city
     end
      
     private
