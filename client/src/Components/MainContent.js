@@ -8,7 +8,6 @@ function MainContent() {
   const [weather, setWeather] = useState([]);
   const [hasCity, setHasCity] = useState(false);
 
-  console.log(process.env.REACT_APP_API_KEY)
 
   const handleCitySearch = () => {
     fetch(
@@ -27,7 +26,7 @@ function MainContent() {
   const renderWeather = hasCity ? (
     <WeatherComponent weatherReport={weather} />
   ) : (
-    <p>loading!</p>
+    <></>
   );
 
   return (
