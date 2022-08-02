@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Backdrop, Modal, Fade, Box, Typography, Card, CardHeader, CardContent, Container } from '@mui/material';
+import FiveDaysWeather from "./FiveDaysWeather";
 
 const style = {
     position: 'absolute',
@@ -18,7 +19,7 @@ function ModalComponenet({ cityWeather, handleClose, open}) {
 
     const date1= new Date(dt*1000+(timezone*1000)).toLocaleDateString();
 
-
+console.log(cityWeather)
     return (
         <Modal 
             aria-labelledby="transition-modal-title"
@@ -78,6 +79,7 @@ function ModalComponenet({ cityWeather, handleClose, open}) {
                     <Typography variant="h7" color="textPrimary">
                         wind: {wind.speed} mp/h
                     </Typography>
+                    <FiveDaysWeather cityName={name}/>
                     </Box>
                 </CardContent>
              </Card>

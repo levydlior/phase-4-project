@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, Typography, Card, CardHeader, Modal, IconButton, CardContent, Container, Backdrop, Fade } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import FiveDaysWeather from "./FiveDaysWeather";
 
 
 const style = {
@@ -137,6 +138,7 @@ const date1= new Date(dt*1000+(timezone*1000)).toLocaleDateString(); // plus
               <Typography variant="h7" color="textPrimary">
                 wind: {wind.speed} mp/h
               </Typography>
+              <FiveDaysWeather cityName={name} />
             </Box>
 
         </CardContent>

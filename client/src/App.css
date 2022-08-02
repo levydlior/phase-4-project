@@ -75,3 +75,9 @@ h1{
   .heart-icon:hover {
     transform: scale(1.1);
   }
+
+  #five-day-forecast-list{
+    list-style: none;
+    padding: 0rem;
+  }
+
