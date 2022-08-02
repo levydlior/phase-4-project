@@ -1,14 +1,7 @@
 import React from "react";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Card from "@mui/material/Card";
-import { CardHeader, Modal } from "@mui/material";
-import { IconButton} from "@mui/material";
+import { Box, Typography, Card, CardHeader, Modal, IconButton, CardContent, Container, Backdrop, Fade } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import { CardContent } from "@mui/material";
-import Container from "@mui/material/Container";
-import { Backdrop } from "@mui/material";
-import { Fade } from "@mui/material";
+
 
 const style = {
   position: 'absolute',

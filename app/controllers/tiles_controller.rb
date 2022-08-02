@@ -20,8 +20,6 @@ class TilesController < ApplicationController
         end
        
         render json: city
-
-      
     end
      
     private

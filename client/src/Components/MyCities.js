@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Tile from "./Tile";
 
 function MyCities({myCities, onUnlike}) {
-
 
   const tilesList = myCities.map((city) => {
     return <Tile city={city} key={city.name} onUnlike={onUnlike}/>;

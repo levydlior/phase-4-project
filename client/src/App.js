@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, useHistory } from "react-router-dom";
 import CreateAnAccount from "./Components/CreateAnAccount";
 import Login from "./Components/Login";
 import "./App.css";
-import { useHistory } from "react-router-dom";
 import MainContent from "./Components/MainContent";
 import Header from "./Components/Header";
-import MyCities from "./Components/MyCities";
+import ManageAccount from "./Components/ManageAccount";
 
 function App() {
   const [loggedUser, setLoggedUser] = useState(null);
@@ -86,8 +85,8 @@ function App() {
               onLikeOrUnlike={handleLikeOrUnlike}
             />
           </Route>
-          <Route exact path="/my-cities">
-            <MyCities myCities={myCities} onUnlike={handleLikeOrUnlike} />
+          <Route exact path="/manage">
+            <ManageAccount />
           </Route>
           <Route exact path="*">
             <h2>404 Error Not Found</h2>

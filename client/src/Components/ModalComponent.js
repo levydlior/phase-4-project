@@ -1,13 +1,5 @@
-import React, {useState} from "react";
-import Backdrop from '@mui/material/Backdrop';
-import Modal from '@mui/material/Modal';
-import Fade from '@mui/material/Fade';
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Card from "@mui/material/Card";
-import { CardHeader } from "@mui/material";
-import { CardContent } from "@mui/material";
-import Container from "@mui/material/Container";
+import React, { useState } from "react";
+import { Backdrop, Modal, Fade, Box, Typography, Card, CardHeader, CardContent, Container } from '@mui/material';
 
 const style = {
     position: 'absolute',
@@ -23,7 +15,6 @@ const style = {
 
 function ModalComponenet({ cityWeather, handleClose, open}) {
     const { dt, timezone, weather, main, wind, sys, name } = cityWeather
-
 
     const date1= new Date(dt*1000+(timezone*1000)).toLocaleDateString();
 

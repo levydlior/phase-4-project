@@ -2,8 +2,7 @@ class CitiesController < ApplicationController
 
   # GET /cities
   def index
-    cities = User.find(session[:user_id]).cities
-    render json: cities
+    render json: User.find(session[:user_id]).cities
   end
 
   # GET /cities/1
@@ -22,6 +21,7 @@ class CitiesController < ApplicationController
   # DELETE /cities/1
   def destroy
     @city.destroy
+    head :no_content
   end
 
   private
