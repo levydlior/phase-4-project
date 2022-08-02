@@ -29,22 +29,30 @@ function FiveDaysWeather({ cityName }) {
   }, []);
 
   const fiveDaysWeatherList = fiveDaysForecast.map((day) => {
-    const date1= new Date(day.dt_txt).toLocaleDateString();
+    const date1 = new Date(day.dt_txt).toLocaleDateString();
     return (
-        <li>
-            <p>{date1}</p> Min of: {day.main.temp_min}<span>&#176;</span>F Max of: {day.main.temp_max}<span>&#176;</span>F
-        </li>
-    )
-  })
+      <li>
+        <p>{date1}</p> Min of: {day.main.temp_min}
+        <span>&#176;</span>F Max of: {day.main.temp_max}
+        <span>&#176;</span>F
+      </li>
+    );
+  });
 
-
-  if (loading) return <CircularProgress />;
   return (
     <div>
-        <h3>In the next five days it will be:</h3>
-  <ul id="five-day-forecast-list">{fiveDaysWeatherList}</ul>
-  </div>
-  )
+      <h3>In the next five days it will be:</h3>
+      <ul id="five-day-forecast-list">
+        {loading ? (
+          <li>
+            <CircularProgress />
+          </li>
+        ) : (
+             fiveDaysWeatherList 
+        )}
+      </ul>
+    </div>
+  );
 }
 
 export default FiveDaysWeather;

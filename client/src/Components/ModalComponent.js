@@ -19,7 +19,6 @@ function ModalComponenet({ cityWeather, handleClose, open}) {
 
     const date1= new Date(dt*1000+(timezone*1000)).toLocaleDateString();
 
-console.log(cityWeather)
     return (
         <Modal 
             aria-labelledby="transition-modal-title"
