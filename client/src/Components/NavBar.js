@@ -11,10 +11,10 @@ function NavBar({loggedUser, onLogOut}) {
        ? null
        : (
         <>
-          <NavLink exact to="/">
+          <NavLink to="/">
             Home
           </NavLink>
-          <NavLink exact to="/manage-account">
+          <NavLink to="/manage">
             Account Management
           </NavLink>
           <NavLink onClick={onLogOut} to="/">

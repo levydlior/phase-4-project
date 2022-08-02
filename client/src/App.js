@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, useHistory } from "react-router-dom";
 import CreateAnAccount from "./Components/CreateAnAccount";
 import Login from "./Components/Login";
 import "./App.css";
-import { useHistory } from "react-router-dom";
 import MainContent from "./Components/MainContent";
 import Header from "./Components/Header";
 import AccManagement from "./Components/MyCities";
@@ -86,7 +85,7 @@ function App() {
               onLikeOrUnlike={handleLikeOrUnlike}
             />
           </Route>
-          <Route exact path="/manage-account">
+          <Route path="/manage">
             <AccManagement />
           </Route>
           <Route exact path="*">

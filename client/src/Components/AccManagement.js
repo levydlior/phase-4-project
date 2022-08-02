@@ -1,8 +1,9 @@
 import React from 'react'
+import MyCities from './MyCities'
 
-function AccManagement() {
+function AccManagement({ myCities }) {
   return (
-    <p>AccManagement</p>
+      <MyCities myCities={myCities}/>
   )
 }
 
