@@ -9,7 +9,7 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 400,
+  width: 600,
   bgcolor: 'background.paper',
   border: '2px solid #000',
   boxShadow: 24,
@@ -115,6 +115,12 @@ const date1= new Date(dt*1000+(timezone*1000)).toLocaleDateString(); // plus
               </Typography>
             </Box>
             <Box p={1}>
+                    <img
+                        src= {`https://openweathermap.org/img/wn/${weather[0].icon}@2x.png`}
+                        alt=""
+                    />
+                    </Box>
+            <Box p={1}>
               <Typography variant="h5" color="textPrimary">
                {weather[0].main}
               </Typography>
@@ -138,9 +144,8 @@ const date1= new Date(dt*1000+(timezone*1000)).toLocaleDateString(); // plus
               <Typography variant="h7" color="textPrimary">
                 wind: {wind.speed} mp/h
               </Typography>
-              <FiveDaysWeather cityName={name} />
             </Box>
-
+            <FiveDaysWeather cityName={name} />
         </CardContent>
       </Card>
     </Container>
