@@ -54,8 +54,7 @@ function FiveDaysWeather({ cityName }) {
           alt=""
         />
        </Item>
-        <Item>H:{day.main.temp_max}<span>&#176;</span>F</Item>
-        <Item>L:{day.main.temp_min}<span>&#176;</span>F</Item>
+        <Item>High:{day.main.temp}<span>&#176;</span>F</Item>
       </Grid>
     );
   });

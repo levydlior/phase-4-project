@@ -127,7 +127,7 @@ const date1= new Date(dt*1000+(timezone*1000)).toLocaleDateString(); // plus
             </Box>
             <Box p={1}>
               <Typography variant="h5" color="textPrimary">
-               H:{main.temp_max}<span>&#176;</span> L:{main.temp_min}<span>&#176;</span>
+               High:{main.temp_max}<span>&#176;</span> Low:{main.temp_min}<span>&#176;</span>
               </Typography>
             </Box>
             <Box p={1}>
