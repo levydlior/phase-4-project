@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Tile from "./Tile";
 
 function MyCities({myCities, onUnlike}) {

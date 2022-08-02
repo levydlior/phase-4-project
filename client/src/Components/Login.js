@@ -14,10 +14,7 @@ const initialForm = {
 }
 
 function Login({ onCreateOrLog, responseFromAccountOrLogged }) {
-  const [loginAccount, setLoginAccount] = useState({
-    username: "",
-    password: "",
-  });
+  const [loginAccount, setLoginAccount] = useState(initialForm);
   const [errors, setErrors] = useState(null);
 
   function handleLoginChange(e) {

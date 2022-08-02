@@ -6,7 +6,7 @@ import "./App.css";
 import { useHistory } from "react-router-dom";
 import MainContent from "./Components/MainContent";
 import Header from "./Components/Header";
-import MyCities from "./Components/MyCities";
+import AccManagement from "./Components/MyCities";
 
 function App() {
   const [loggedUser, setLoggedUser] = useState(null);
@@ -86,8 +86,8 @@ function App() {
               onLikeOrUnlike={handleLikeOrUnlike}
             />
           </Route>
-          <Route exact path="/my-cities">
-            <MyCities myCities={myCities} onUnlike={handleLikeOrUnlike} />
+          <Route exact path="/manage-account">
+            <AccManagement />
           </Route>
           <Route exact path="*">
             <h2>404 Error Not Found</h2>

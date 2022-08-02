@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import SearchComponent from "./SearchComponent";
 import WeatherComponent from "./WeatherComponent";
-import MyCities from "./MyCities";
-
+import MyCities from "./MyCities"
 
 function MainContent({myCities, onLikeOrUnlike}) {
   const [city, setCity] = useState([]);
