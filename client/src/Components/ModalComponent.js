@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Backdrop, Modal, Fade, Box, Typography, Card, CardHeader, CardContent, Container } from '@mui/material';
+import { Backdrop, Modal, Fade, Box, Typography, Card, CardHeader, CardContent, Container, Avatar } from '@mui/material';
 import FiveDaysWeather from "./FiveDaysWeather";
 
 const style = {
@@ -31,17 +31,20 @@ function ModalComponenet({ cityWeather, handleClose, open}) {
             timeout: 500,
         }}>
             <Fade in={open}>
+            <Container component="main" maxWidth="sm">
                 <Card
                 sx={style}
                 >
                 <CardHeader
                     subheader={date1}
                 />
-                <CardContent sx={{
+                <CardContent 
+                    sx={{
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
-                }}>
+                    }}
+                    >
                     <Box p={1}>
                     <Typography variant="h4" color="textPrimary">
                         {name}, {sys.country}
@@ -53,6 +56,12 @@ function ModalComponenet({ cityWeather, handleClose, open}) {
                         <span>&#176;</span>
                         {"F"}
                     </Typography>
+                    <Box p={1}>
+                    <img
+                        src= {`https://openweathermap.org/img/wn/${weather[0].icon}@2x.png`}
+                        alt=""
+                    />
+                    </Box>
                     </Box>
                     <Box p={1}>
                     <Typography variant="h5" color="textPrimary">
@@ -78,10 +87,11 @@ function ModalComponenet({ cityWeather, handleClose, open}) {
                     <Typography variant="h7" color="textPrimary">
                         wind: {wind.speed} mp/h
                     </Typography>
-                    <FiveDaysWeather cityName={name}/>
                     </Box>
+                    <FiveDaysWeather cityName={name}/>
                 </CardContent>
              </Card>
+             </Container>
         </Fade>
     </Modal>
 
