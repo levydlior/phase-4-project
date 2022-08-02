@@ -8,8 +8,6 @@ import Paper from '@mui/material/Paper';
 import {IconButton} from "@mui/material";
 import MyLocationIcon from '@mui/icons-material/MyLocation';
 
-
-
 function SearchComponent({ city, setCity, onCitySearch, handleOpen }) {
 
    const handleChange = (e) => {
