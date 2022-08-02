@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import SearchComponent from "./SearchComponent";
 import WeatherComponent from "./WeatherComponent";
+import MyCities from "./MyCities";
 
 
 function MainContent({myCities, onLikeOrUnlike}) {
   const [city, setCity] = useState([]);
   const [weather, setWeather] = useState([]);
   const [hasCity, setHasCity] = useState(false);
+  const [open, setOpen] = useState(false);
+  const handleClose = () => setOpen(false);
 
 
   const handleCitySearch = () => {
@@ -21,18 +24,20 @@ function MainContent({myCities, onLikeOrUnlike}) {
         });
       }
     });
+   setOpen(true);
   };
 
   const renderWeather = hasCity ? (
-    <WeatherComponent weatherReport={weather} myCities={myCities} onLikeOrUnlike={onLikeOrUnlike}/>
+    <WeatherComponent weatherReport={weather} myCities={myCities} onLikeOrUnlike={onLikeOrUnlike} open={open} handleClose={handleClose}/>
   ) : (
     <></>
   );
 
   return (
     <main id="main-page-main">
-      <SearchComponent city={city} setCity={setCity} onCitySearch={handleCitySearch} />
+      <SearchComponent city={city} setCity={setCity} onCitySearch={handleCitySearch}/>
       {renderWeather}
+      <MyCities myCities={myCities} onLikeOrUnlike={onLikeOrUnlike}/>
     </main>
   );
 }

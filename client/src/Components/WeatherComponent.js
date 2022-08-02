@@ -2,15 +2,28 @@ import React from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
-import { CardHeader } from "@mui/material";
-import { IconButton, IconButtonProps } from "@mui/material";
+import { CardHeader, Modal } from "@mui/material";
+import { IconButton} from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import { CardActions } from "@mui/material";
-
 import { CardContent } from "@mui/material";
 import Container from "@mui/material/Container";
+import { Backdrop } from "@mui/material";
+import { Fade } from "@mui/material";
 
-function WeatherComponent({ weatherReport, myCities, onLikeOrUnlike }) {
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+};
+
+
+function WeatherComponent({ weatherReport, myCities, onLikeOrUnlike, open, handleClose }) {
   const { dt, timezone, weather, main, wind, sys, name } = weatherReport;
   // console.log(new Date(dt * 1000 - timezone * 1000)); // minus
   // console.log(new Date(dt * 1000 + timezone * 1000)); // plus
@@ -61,11 +74,19 @@ const date1= new Date(dt*1000+(timezone*1000)).toLocaleDateString(); // plus
 
 
   return (
+    <Modal aria-labelledby="transition-modal-title"
+    aria-describedby="transition-modal-description"
+    open={open}
+    onClose={handleClose}
+    closeAfterTransition
+    BackdropComponent={Backdrop}
+    BackdropProps={{
+      timeout: 500,
+    }}>
+      <Fade in={open}>
     <Container component="main" maxWidth="sm">
       <Card
-        sx={{
-          marginTop: 8,
-        }}
+        sx={style}
       >
         <CardHeader
           action={
@@ -128,6 +149,8 @@ const date1= new Date(dt*1000+(timezone*1000)).toLocaleDateString(); // plus
         </CardContent>
       </Card>
     </Container>
+    </Fade>
+    </Modal>
   );
 }
 
