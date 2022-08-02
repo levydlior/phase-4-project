@@ -5,6 +5,8 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import SearchIcon from '@mui/icons-material/Search';
 import Paper from '@mui/material/Paper';
+import {IconButton} from "@mui/material";
+import MyLocationIcon from '@mui/icons-material/MyLocation';
 
 
 
@@ -39,6 +41,11 @@ function SearchComponent({ city, setCity, onCitySearch, handleOpen }) {
               <Button onClick={onCitySearch} variant="contained" sx={{ mr: 1 }}>
                 Search
               </Button>
+            </Grid>
+            <Grid item>
+            <IconButton aria-label="settings">
+                <MyLocationIcon sx={{ color: "gray" }} />
+              </IconButton>
             </Grid>
           </Grid>
         </Toolbar>
