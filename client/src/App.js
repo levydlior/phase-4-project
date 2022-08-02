@@ -5,7 +5,7 @@ import Login from "./Components/Login";
 import "./App.css";
 import MainContent from "./Components/MainContent";
 import Header from "./Components/Header";
-import AccManagement from "./Components/MyCities";
+import ManageAccount from "./Components/ManageAccount";
 
 function App() {
   const [loggedUser, setLoggedUser] = useState(null);
@@ -85,8 +85,8 @@ function App() {
               onLikeOrUnlike={handleLikeOrUnlike}
             />
           </Route>
-          <Route path="/manage">
-            <AccManagement />
+          <Route exact path="/manage">
+            <ManageAccount />
           </Route>
           <Route exact path="*">
             <h2>404 Error Not Found</h2>
