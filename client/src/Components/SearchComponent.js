@@ -1,13 +1,11 @@
 import React from 'react'
 import { Toolbar, Grid, Button, TextField, Paper } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
-
-import Paper from '@mui/material/Paper';
 import {IconButton} from "@mui/material";
 import MyLocationIcon from '@mui/icons-material/MyLocation';
 
 
-function SearchComponent({ city, setCity, onCitySearch, handleOpen }) {
+function SearchComponent({ city, setCity, onCitySearch}) {
 
    const handleChange = (e) => {
        e.preventDefault()
