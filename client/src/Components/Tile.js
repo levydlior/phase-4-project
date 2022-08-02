@@ -18,6 +18,7 @@ function Tile({ city, onUnlike }) {
   const [fetchedCity, setFetchedCity] = useState({});
   const [loaded, setLoaded] = useState(false);
   const [open, setOpen] = useState(false);
+  
   const handleOpen = (e) => {
     e.stopPropagation();
     setOpen(true);

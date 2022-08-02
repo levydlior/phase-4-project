@@ -36,7 +36,7 @@ function MainContent({myCities, onLikeOrUnlike}) {
     <main id="main-page-main">
       <SearchComponent city={city} setCity={setCity} onCitySearch={handleCitySearch}/>
       {renderWeather}
-      <MyCities myCities={myCities} onLikeOrUnlike={onLikeOrUnlike}/>
+      <MyCities myCities={myCities} onUnlike={onLikeOrUnlike}/>
     </main>
   );
 }
