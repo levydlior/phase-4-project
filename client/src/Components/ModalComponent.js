@@ -9,9 +9,7 @@ import {
   CardHeader,
   CardContent,
   Container,
-  Avatar,
   Button,
-  Grid,
 } from "@mui/material";
 import FiveDaysWeather from "./FiveDaysWeather";
 

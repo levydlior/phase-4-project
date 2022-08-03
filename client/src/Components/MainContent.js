@@ -5,10 +5,12 @@ import MyCities from "./MyCities";
 
 function MainContent({ myCities, onLikeOrUnlike, measuringSystem }) {
   const [city, setCity] = useState([]);
+  const [coords, setCoords] = useState([])
   const [weather, setWeather] = useState([]);
   const [hasCity, setHasCity] = useState(false);
   const [open, setOpen] = useState(false);
   const handleClose = () => setOpen(false);
+  const [loading, setLoading] = useState(true);
 
   function imperialOrMetric() {
     if (measuringSystem) {
@@ -29,6 +31,27 @@ function MainContent({ myCities, onLikeOrUnlike, measuringSystem }) {
           setWeather(res);
           setHasCity(true);
           setCity("");
+          setLoading(false)
+        });
+      }
+    });
+    setOpen(true);
+  };
+
+
+
+  const handleLocationSearch = () => {
+    fetch(
+      `${process.env.REACT_APP_API_URL}/weather?lat=${coords.lat}&lon=${coords.lon}&APPID=${
+        process.env.REACT_APP_API_KEY
+      }&units=${imperialOrMetric()}`
+    ).then((r) => {
+      if (r.ok) {
+        r.json().then((res) => {
+          setWeather(res);
+          setHasCity(true);
+          setCity("");
+          setLoading(false)
         });
       }
     });
@@ -43,6 +66,7 @@ function MainContent({ myCities, onLikeOrUnlike, measuringSystem }) {
       open={open}
       handleClose={handleClose}
       measuringSystem={measuringSystem}
+      loading={loading}
     />
   ) : (
     <></>
@@ -54,6 +78,8 @@ function MainContent({ myCities, onLikeOrUnlike, measuringSystem }) {
         city={city}
         setCity={setCity}
         onCitySearch={handleCitySearch}
+        onLocationSearch={handleLocationSearch}
+        setCoords={setCoords}
       />
       {renderWeather}
       <MyCities
