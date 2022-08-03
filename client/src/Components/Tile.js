@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Card, CardContent, Button, Typography, CardActions, CardMedia, Backdrop, Box, Modal, Fade } from "@mui/material";
 import ModalComponenet from "./ModalComponent";
+import { ContactSupportOutlined } from "@material-ui/icons";
 
 const style = {
   position: "absolute",
@@ -40,16 +41,18 @@ function Tile({ city, onUnlike }) {
     });
   }, []);
 
-  function handleUnlike(e) {
-    e.stopPropagation();
-    fetch(`/tiles/${city.id}`, {
-      method: "DELETE",
-    }).then((r) => {
-      if (r.ok) {
-        r.json().then((removedTile) => onUnlike(removedTile));
-      }
-    });
-  }
+  console.log(city.id)
+
+  // function handleUnlike(e) {
+  //   e.stopPropagation();
+  //   fetch(`/tiles/${city.id}`, {
+  //     method: "DELETE",
+  //   }).then((r) => {
+  //     if (r.ok) {
+  //       r.json().then((removedTile) => onUnlike(removedTile));
+  //     }
+  //   });
+  // }
 
   return (
     <Card
@@ -70,9 +73,11 @@ function Tile({ city, onUnlike }) {
           image="https://img.freepik.com/free-vector/gorgeous-clouds-background-with-blue-sky-design_1017-25501.jpg"
           alt="weather"/> */}
           <ModalComponenet
+          city={city}
             cityWeather={fetchedCity}
             handleClose={handleClose}
             open={open}
+            onUnlike={onUnlike}
           />
 
           <CardContent
@@ -102,9 +107,9 @@ function Tile({ city, onUnlike }) {
             </Typography>
             <Typography variant="body2">{fetchedCity.main.temp}</Typography>
           </CardContent>
-          <Button onClick={handleUnlike} variant="contained">
+          {/* <Button onClick={handleUnlike} variant="contained">
             Remove
-          </Button>
+          </Button> */}
         </div>
       ) : (
         <p>Loading!</p>
