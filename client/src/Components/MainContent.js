@@ -5,7 +5,6 @@ import MyCities from "./MyCities";
 
 function MainContent({ myCities, onLikeOrUnlike, measuringSystem }) {
   const [city, setCity] = useState([]);
-  const [coords, setCoords] = useState([])
   const [weather, setWeather] = useState([]);
   const [hasCity, setHasCity] = useState(false);
   const [open, setOpen] = useState(false);
@@ -39,10 +38,9 @@ function MainContent({ myCities, onLikeOrUnlike, measuringSystem }) {
   };
 
 
-
-  const handleLocationSearch = () => {
+  const handleLocationSearch = (lat, lon) => {
     fetch(
-      `${process.env.REACT_APP_API_URL}/weather?lat=${coords.lat}&lon=${coords.lon}&APPID=${
+      `${process.env.REACT_APP_API_URL}/weather?lat=${lat}&lon=${lon}&APPID=${
         process.env.REACT_APP_API_KEY
       }&units=${imperialOrMetric()}`
     ).then((r) => {
@@ -79,7 +77,6 @@ function MainContent({ myCities, onLikeOrUnlike, measuringSystem }) {
         setCity={setCity}
         onCitySearch={handleCitySearch}
         onLocationSearch={handleLocationSearch}
-        setCoords={setCoords}
       />
       {renderWeather}
       <MyCities

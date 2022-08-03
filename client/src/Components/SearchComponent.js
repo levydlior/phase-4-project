@@ -5,7 +5,7 @@ import {IconButton} from "@mui/material";
 import MyLocationIcon from '@mui/icons-material/MyLocation';
 
 
-function SearchComponent({ city, setCity, onCitySearch, onLocationSearch, setCoords}) {
+function SearchComponent({ city, setCity, onCitySearch, onLocationSearch}) {
 
    const handleChange = (e) => {
        e.preventDefault()
@@ -19,12 +19,9 @@ function SearchComponent({ city, setCity, onCitySearch, onLocationSearch, setCoo
         let lat = position.coords.latitude;
         let lon = position.coords.longitude;
 
-        setCoords({
-          lat,
-          lon,
-        });
+       
 
-        onLocationSearch()
+        onLocationSearch(lat, lon)
       });
     }
   };
