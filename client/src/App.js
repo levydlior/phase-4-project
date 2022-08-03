@@ -86,7 +86,7 @@ function App() {
             />
           </Route>
           <Route exact path="/manage">
-            <ManageAccount />
+            <ManageAccount handleLogOut={handleLogOut} />
           </Route>
           <Route exact path="*">
             <h2>404 Error Not Found</h2>

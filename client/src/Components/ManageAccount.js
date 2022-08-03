@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { Button, CssBaseline, TextField, FormLabel, Grid, Box, Typography, Container } from "@mui/material"
+import { Button, TextField, FormLabel, Container } from "@mui/material"
 
-function ManageAccount() {
+function ManageAccount({handleLogOut}) {
     const initialForm = {
         username: "",
         password: "",
@@ -9,13 +9,12 @@ function ManageAccount() {
     }
     const [form, setForm] = useState(initialForm)
     const [exception, setException] = useState(null)
-    //how do we want to display a PATCH error to user?
 
     const handleSubmit = (e) => {
         e.preventDefault()
         if (form.password === form.verify){
             const updateObj = {username: form.username, password: form.password}
-            fetch("/users", {
+            fetch("/users/1", {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json",
@@ -35,8 +34,15 @@ function ManageAccount() {
             })
         }
         else {
-            //passwords don't match
+            
+            //passwords don't match: modal?
         }
+    }
+    
+    const handleDelete  = (e) => {
+        e.preventDefault()
+        fetch("/users/1", { method: "DELETE" })
+        handleLogOut()
     }
 
     const handleInput = (e) => {
@@ -46,6 +52,9 @@ function ManageAccount() {
 
     return (
         <Container maxWidth="xs" onChange={handleInput}>
+            {exception ?
+            <FormLabel sx={{mt:3}} >{exception.errors}</FormLabel>
+            :null}
             <TextField
                 name="username"
                 type="text"
@@ -70,14 +79,20 @@ function ManageAccount() {
                 value={form.verify}
                 sx={{mt:1}}
             />
-
             <Button 
                 type="submit" 
                 fullWidth
                 variant="contained"
-                sx={{mt:2}}
+                sx={{mt:2, mb:5}}
                 onClick={handleSubmit}
                 >Update user info
+            </Button>
+            <Button
+                fullWidth
+                variant="contained"
+                onClick={handleDelete}
+                color="error"
+            >Delete user
             </Button>
         </Container>
     )

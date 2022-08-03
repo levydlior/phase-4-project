@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :cities, only: [:index, :create, :show, :destroy]
   
-  resources :users, only: [:create, :show, :update]
+  resources :users, only: [:create, :show, :update, :destroy]
    
   resources :tiles, only: [:create, :destroy]
 

@@ -13,8 +13,16 @@ class UsersController < ApplicationController
     end
 
     def update
-      user = User.find_by_id(session[:user_id])
+      user = User.find_by(id: session[:user_id])
       user.update!(user_params)
+      render json: user, status: :updated
+      #updated or ok status?
+    end
+
+    def destroy
+      user = User.find_by(id: session[:user_id])
+      user.destroy
+      head :no_content
     end
   
     private
