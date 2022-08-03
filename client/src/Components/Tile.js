@@ -30,16 +30,16 @@ function Tile({ city, onUnlike }) {
   }, []);
 
 
-  function handleUnlike(e) {
-    e.stopPropagation();
-    fetch(`/tiles/${city.id}`, {
-      method: "DELETE",
-    }).then((r) => {
-      if (r.ok) {
-        r.json().then((removedTile) => onUnlike(removedTile));
-      }
-    });
-  }
+  // function handleUnlike(e) {
+  //   e.stopPropagation();
+  //   fetch(`/tiles/${city.id}`, {
+  //     method: "DELETE",
+  //   }).then((r) => {
+  //     if (r.ok) {
+  //       r.json().then((removedTile) => onUnlike(removedTile));
+  //     }
+  //   });
+  // }
 
   return (
     <Card
