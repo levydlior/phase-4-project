@@ -12,6 +12,21 @@ function SearchComponent({ city, setCity, onCitySearch}) {
        setCity(e.target.value)
    }
 
+   const handleLocationClick = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+
+        let lat = position.coords.latitude;
+        let lon = position.coords.longitude;
+
+        console.log({
+          lat,
+          lon,
+        });
+      });
+    }
+  };
+
   return (
     <Paper sx={{ maxWidth: 700, margin: 'auto', overflow: 'hidden' }}>
         <Toolbar type="form" >
@@ -38,8 +53,8 @@ function SearchComponent({ city, setCity, onCitySearch}) {
               </Button>
             </Grid>
             <Grid item>
-            <IconButton aria-label="settings">
-                <MyLocationIcon sx={{ color: "gray" }} />
+            <IconButton onClick={handleLocationClick}  aria-label="settings">
+                <MyLocationIcon sx={{ color: "gray" }}/>
               </IconButton>
             </Grid>
           </Grid>
