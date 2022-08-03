@@ -17,7 +17,7 @@ const style = {
 };
 
 
-function WeatherComponent({ weatherReport, myCities, onLikeOrUnlike, open, handleClose }) {
+function WeatherComponent({ weatherReport, myCities, onLikeOrUnlike, open, handleClose,  measuringSystem}) {
   const { dt, timezone, weather, main, wind, sys, name } = weatherReport;
   // console.log(new Date(dt * 1000 - timezone * 1000)); // minus
   // console.log(new Date(dt * 1000 + timezone * 1000)); // plus
@@ -66,7 +66,6 @@ const date1= new Date(dt*1000+(timezone*1000)).toLocaleDateString(); // plus
     });
   }
 
-
   return (
     <Modal 
     aria-labelledby="transition-modal-title"
@@ -112,7 +111,7 @@ const date1= new Date(dt*1000+(timezone*1000)).toLocaleDateString(); // plus
               <Typography variant="h2" color="textPrimary">
                 {main.temp}
                 <span>&#176;</span>
-                {"F"}
+                {!measuringSystem? "F": "C"}
               </Typography>
             </Box>
             <Box p={0}>

@@ -14,7 +14,7 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.primary,
 }));
 
-function FiveDaysWeather({ cityName }) {
+function FiveDaysWeather({ cityName, measuringSystem }) {
   const [loading, setLoading] = useState(true);
   const [fiveDaysForecast, setFiveDaysForecast] = useState([]);
 
@@ -26,9 +26,17 @@ function FiveDaysWeather({ cityName }) {
     }
   }
 
+  function imperialOrMetric(){
+    if(measuringSystem){
+      return 'metric'
+    }else {
+      return 'imperial'
+    }
+  }
+
   useEffect(() => {
     fetch(
-      `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${process.env.REACT_APP_API_KEY}&units=imperial`
+      `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${process.env.REACT_APP_API_KEY}&units=${imperialOrMetric()}`
     ).then((r) => {
       if (r.ok) {
         r.json().then((forecast) => {
@@ -39,19 +47,19 @@ function FiveDaysWeather({ cityName }) {
         });
       }
     });
-  }, []);
+  }, [measuringSystem]);
 
   const fiveDaysWeatherList = fiveDaysForecast.map((day) => {
     const date1 = new Date(day.dt_txt).toLocaleDateString();
     return (
-      <Grid item xs={6} alignContent='flex-start' alignItems='flex-start' justify='flex-start'>
+      <Grid item xs={6} alignContent='flex-start' alignItems='flex-start' justify='flex-start' key={day.dt_txt}>
         <Item>{date1}</Item>
         <Item>
          <img src= {`https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png`}
           alt=""
         />
        </Item>
-        <Item>High:{day.main.temp}<span>&#176;</span>F</Item>
+        <Item>High:{day.main.temp}<span>&#176;</span>{!measuringSystem? "F" : "C"}</Item>
       </Grid>
     );
   });

@@ -15,7 +15,7 @@ const style = {
     p: 4,
   };
 
-function ModalComponenet({ city, cityWeather, handleClose, open, onUnlike}) {
+function ModalComponenet({ city, cityWeather, handleClose, open, onUnlike, measuringSystem}) {
     const { dt, timezone, weather, main, wind, sys, name } = cityWeather
 
     const date1= new Date(dt*1000+(timezone*1000)).toLocaleDateString();
@@ -116,7 +116,7 @@ function ModalComponenet({ city, cityWeather, handleClose, open, onUnlike}) {
                     </Typography>
                     </Box>
                     </Box>
-                    <FiveDaysWeather cityName={name}/>
+                    <FiveDaysWeather cityName={name} measuringSystem={measuringSystem}/>
                 </CardContent>
              </Card>
              </Container>

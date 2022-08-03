@@ -1,13 +1,26 @@
 import React, { useEffect, useState } from "react";
-import { Card, CardContent, Button, Typography, CardMedia } from "@mui/material";
+import {
+  Card,
+  CardContent,
+  Button,
+  Typography,
+  CardMedia,
+} from "@mui/material";
 import ModalComponenet from "./ModalComponent";
 
-
-function Tile({ city, onUnlike }) {
+function Tile({ city, onUnlike, measuringSystem }) {
   const [fetchedCity, setFetchedCity] = useState({});
   const [loaded, setLoaded] = useState(false);
   const [open, setOpen] = useState(false);
-  
+
+  function imperialOrMetric() {
+    if (measuringSystem) {
+      return "metric";
+    } else {
+      return "imperial";
+    }
+  }
+
   const handleOpen = (e) => {
     e.stopPropagation();
     setOpen(true);
@@ -18,7 +31,9 @@ function Tile({ city, onUnlike }) {
 
   useEffect(() => {
     fetch(
-      `${process.env.REACT_APP_API_URL}/weather?q=${cityName}&APPID=${process.env.REACT_APP_API_KEY}&units=imperial`
+      `${process.env.REACT_APP_API_URL}/weather?q=${cityName}&APPID=${
+        process.env.REACT_APP_API_KEY
+      }&units=${imperialOrMetric()}`
     ).then((r) => {
       if (r.ok) {
         r.json().then((weather) => {
@@ -27,19 +42,7 @@ function Tile({ city, onUnlike }) {
         });
       }
     });
-  }, []);
-
-
-  // function handleUnlike(e) {
-  //   e.stopPropagation();
-  //   fetch(`/tiles/${city.id}`, {
-  //     method: "DELETE",
-  //   }).then((r) => {
-  //     if (r.ok) {
-  //       r.json().then((removedTile) => onUnlike(removedTile));
-  //     }
-  //   });
-  // }
+  }, [measuringSystem]);
 
   return (
     <Card
@@ -54,17 +57,13 @@ function Tile({ city, onUnlike }) {
             setOpen(!open);
           }}
         >
-          {/* <CardMedia component="img"
-          height="100%"
-          width="100%"
-          image="https://img.freepik.com/free-vector/gorgeous-clouds-background-with-blue-sky-design_1017-25501.jpg"
-          alt="weather"/> */}
           <ModalComponenet
-          city={city}
+            city={city}
             cityWeather={fetchedCity}
             handleClose={handleClose}
             open={open}
             onUnlike={onUnlike}
+            measuringSystem={measuringSystem}
           />
 
           <CardContent
@@ -78,7 +77,8 @@ function Tile({ city, onUnlike }) {
             </Typography>
             <Typography align="right" variant="h4">
               {fetchedCity.main.temp}
-              <span>&#176;</span>F
+              <span>&#176;</span>
+              {!measuringSystem ? "F" : "C"}
             </Typography>
           </CardContent>
           <CardContent
@@ -94,9 +94,6 @@ function Tile({ city, onUnlike }) {
             </Typography>
             <Typography variant="body2">{fetchedCity.main.temp}</Typography>
           </CardContent>
-          {/* <Button onClick={handleUnlike} variant="contained">
-            Remove
-          </Button> */}
         </div>
       ) : (
         <p>Loading!</p>
