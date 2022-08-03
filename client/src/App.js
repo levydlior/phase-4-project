@@ -28,13 +28,17 @@ function App() {
     });
   }, []);
 
-  useEffect(() => {
-    fetch("/cities").then((r) => {
-      if (r.ok) {
-        r.json().then((likeCities) => setMyCities(likeCities));
-      }
-    });
-  }, [loggedUser], [measuringSystem]);
+  useEffect(
+    () => {
+      fetch("/cities").then((r) => {
+        if (r.ok) {
+          r.json().then((likeCities) => setMyCities(likeCities));
+        }
+      });
+    },
+    [loggedUser],
+    [measuringSystem]
+  );
 
   function handleLogOut(e) {
     e.preventDefault();

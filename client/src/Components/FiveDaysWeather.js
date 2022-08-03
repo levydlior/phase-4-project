@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from "react";
 import CircularProgress from "@mui/material/CircularProgress";
 import { Grid } from "@mui/material";
-import { styled } from '@mui/material/styles';
-import Paper from '@mui/material/Paper';
-import Box from '@mui/material/Box';
-
+import { styled } from "@mui/material/styles";
+import Paper from "@mui/material/Paper";
+import Box from "@mui/material/Box";
 
 const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
   ...theme.typography.body2,
   padding: theme.spacing(0),
-  textAlign: 'center',
+  textAlign: "center",
   color: theme.palette.text.primary,
 }));
 
@@ -26,17 +25,19 @@ function FiveDaysWeather({ cityName, measuringSystem }) {
     }
   }
 
-  function imperialOrMetric(){
-    if(measuringSystem){
-      return 'metric'
-    }else {
-      return 'imperial'
+  function imperialOrMetric() {
+    if (measuringSystem) {
+      return "metric";
+    } else {
+      return "imperial";
     }
   }
 
   useEffect(() => {
     fetch(
-      `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${process.env.REACT_APP_API_KEY}&units=${imperialOrMetric()}`
+      `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${
+        process.env.REACT_APP_API_KEY
+      }&units=${imperialOrMetric()}`
     ).then((r) => {
       if (r.ok) {
         r.json().then((forecast) => {
@@ -52,14 +53,26 @@ function FiveDaysWeather({ cityName, measuringSystem }) {
   const fiveDaysWeatherList = fiveDaysForecast.map((day) => {
     const date1 = new Date(day.dt_txt).toLocaleDateString();
     return (
-      <Grid item xs={6} alignContent='flex-start' alignItems='flex-start' justify='flex-start' key={day.dt_txt}>
+      <Grid
+        item
+        xs={6}
+        alignContent="flex-start"
+        alignItems="flex-start"
+        justify="flex-start"
+        key={day.dt_txt}
+      >
         <Item>{date1}</Item>
         <Item>
-         <img src= {`https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png`}
-          alt=""
-        />
-       </Item>
-        <Item>High:{day.main.temp}<span>&#176;</span>{!measuringSystem? "F" : "C"}</Item>
+          <img
+            src={`https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png`}
+            alt=""
+          />
+        </Item>
+        <Item>
+          High:{day.main.temp}
+          <span>&#176;</span>
+          {!measuringSystem ? "F" : "C"}
+        </Item>
       </Grid>
     );
   });
@@ -67,23 +80,23 @@ function FiveDaysWeather({ cityName, measuringSystem }) {
   return (
     <div>
       <h3 align="center">5 Day Forecast:</h3>
-      <Box >
-      <Grid  
-        container
-        direction="row"
-        justifyContent="space-evenly"
-        alignItems="center"
-        spacing={{ xs: 2, md: 4 }} 
-        columns={{ xs: 6, sm: 12, md: 30 }}
+      <Box>
+        <Grid
+          container
+          direction="row"
+          justifyContent="space-evenly"
+          alignItems="center"
+          spacing={{ xs: 2, md: 4 }}
+          columns={{ xs: 6, sm: 12, md: 30 }}
         >
-        {loading ? (
-          <Grid item xs={6}>
-            <CircularProgress />
-          </Grid>
-        ) : (
-             fiveDaysWeatherList 
-        )}
-      </Grid>
+          {loading ? (
+            <Grid item xs={6}>
+              <CircularProgress />
+            </Grid>
+          ) : (
+            fiveDaysWeatherList
+          )}
+        </Grid>
       </Box>
     </div>
   );
