@@ -94,6 +94,7 @@ function App() {
               myCities={myCities}
               onLikeOrUnlike={handleLikeOrUnlike}
               measuringSystem={measuringSystem}
+              onMeasuringChange={handleMeasuringChange}
             />
           </Route>
           <Route exact path="/manage">

@@ -3,9 +3,14 @@ import { Toolbar, Grid, Button, TextField, Paper } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import {IconButton} from "@mui/material";
 import MyLocationIcon from '@mui/icons-material/MyLocation';
+import { Switch } from '@mui/material';
 
 
-function SearchComponent({ city, setCity, onCitySearch, onLocationSearch}) {
+function SearchComponent({ city, setCity, onCitySearch, onLocationSearch, measuringSystem, onMeasuringChange}) {
+
+  function handleMeasuringChange(e) {
+    onMeasuringChange();
+  }
 
    const handleChange = (e) => {
        e.preventDefault()
@@ -18,8 +23,6 @@ function SearchComponent({ city, setCity, onCitySearch, onLocationSearch}) {
 
         let lat = position.coords.latitude;
         let lon = position.coords.longitude;
-
-       
 
         onLocationSearch(lat, lon)
       });
@@ -57,8 +60,11 @@ function SearchComponent({ city, setCity, onCitySearch, onLocationSearch}) {
               </IconButton>
             </Grid>
           </Grid>
+        <p>F°/C°</p>
+        <Switch value={measuringSystem} onChange={handleMeasuringChange}/>
         </Toolbar>
     </Paper>
+
 
   )}
 
