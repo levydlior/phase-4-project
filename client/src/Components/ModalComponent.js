@@ -7,7 +7,7 @@ const style = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 600,
+    width: 800,
     bgcolor: 'background.paper',
     border: '2px solid #000',
     boxShadow: 24,
@@ -31,7 +31,7 @@ function ModalComponenet({ cityWeather, handleClose, open}) {
             timeout: 500,
         }}>
             <Fade in={open}>
-            <Container component="main" maxWidth="sm">
+            <Container component="main" maxWidth="md">
                 <Card
                 sx={style}
                 >
@@ -45,45 +45,45 @@ function ModalComponenet({ cityWeather, handleClose, open}) {
                     alignItems: 'center',
                     }}
                     >
-                    <Box p={1}>
+                    <Box p={0}>
                     <Typography variant="h4" color="textPrimary">
                         {name}, {sys.country}
                     </Typography>
                     </Box>
-                    <Box p={1}>
+                    <Box p={0}>
                     <Typography variant="h2" color="textPrimary">
                         {main.temp}
                         <span>&#176;</span>
                         {"F"}
                     </Typography>
-                    <Box p={1}>
+                    </Box>
+                    <Box p={0}>
                     <img
                         src= {`https://openweathermap.org/img/wn/${weather[0].icon}@2x.png`}
                         alt=""
                     />
                     </Box>
-                    </Box>
-                    <Box p={1}>
+                    <Box p={0}>
                     <Typography variant="h5" color="textPrimary">
                     {weather[0].main}
                     </Typography>
                     </Box>
-                    <Box p={1}>
+                    <Box p={0}>
                     <Typography variant="h5" color="textPrimary">
                     High:{main.temp_max}<span>&#176;</span> Low:{main.temp_min}<span>&#176;</span>
                     </Typography>
                     </Box>
-                    <Box p={1}>
+                    <Box p={0}>
                     <Typography variant="h7" color="textPrimary">
                         Humidity: {main.humidity} %
                     </Typography>
                     </Box>
-                    <Box p={1}>
+                    <Box p={0}>
                     <Typography variant="h7" color="textPrimary">
                         pressure: {main.pressure} pa
                     </Typography>
                     </Box>
-                    <Box p={1}>
+                    <Box p={0}>
                     <Typography variant="h7" color="textPrimary">
                         wind: {wind.speed} mp/h
                     </Typography>
