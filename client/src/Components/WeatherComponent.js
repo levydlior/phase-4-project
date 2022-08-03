@@ -10,6 +10,8 @@ import {
   Container,
   Backdrop,
   Fade,
+  Grid,
+  CircularProgress
 } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FiveDaysWeather from "./FiveDaysWeather";
@@ -33,6 +35,7 @@ function WeatherComponent({
   open,
   handleClose,
   measuringSystem,
+  loading
 }) {
   const { dt, timezone, weather, main, wind, sys, name } = weatherReport;
   // console.log(new Date(dt * 1000 - timezone * 1000)); // minus
@@ -81,6 +84,12 @@ function WeatherComponent({
   }
 
   return (
+    <div>
+    {loading ? (
+      <Grid item xs={6}>
+        <CircularProgress />
+      </Grid>
+    ) : (
     <Modal
       aria-labelledby="transition-modal-title"
       aria-describedby="transition-modal-description"
@@ -176,6 +185,8 @@ function WeatherComponent({
         </Container>
       </Fade>
     </Modal>
+    )}
+    </div>
   );
 }
 
