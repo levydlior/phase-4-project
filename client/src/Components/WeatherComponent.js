@@ -179,7 +179,7 @@ function WeatherComponent({
                   </Typography>
                 </Box>
               </Box>
-              <FiveDaysWeather cityName={name} />
+              <FiveDaysWeather cityName={name} measuringSystem={measuringSystem}/>
             </CardContent>
           </Card>
         </Container>
