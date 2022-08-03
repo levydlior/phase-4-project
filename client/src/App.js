@@ -36,7 +36,6 @@ function App() {
   }, [loggedUser]);
 
   function handleLogOut(e) {
-    e.preventDefault();
     fetch("/logout", {
       method: "DELETE",
     }).then((r) => {
