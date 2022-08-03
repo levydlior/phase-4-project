@@ -13,6 +13,7 @@ function App() {
     useState(false);
   const [authorize, setAuthorize] = useState(false);
   const [myCities, setMyCities] = useState([]);
+  const [measuringSystem, setMeasuringSystem] = useState(false);
 
   useEffect(() => {
     fetch("/users/show").then((r) => {
@@ -69,19 +70,30 @@ function App() {
     }
   }
 
+  function handleMeasuringChange() {
+    setMeasuringSystem(!measuringSystem);
+  }
+
   if (!authorize) {
     return <div></div>;
   }
 
   return (
     <div>
-      <Header loggedUser={loggedUser} onLogOut={handleLogOut} />
+      <Header
+        loggedUser={loggedUser}
+        onLogOut={handleLogOut}
+        measuringSystem={measuringSystem}
+        onMeasuringChange={handleMeasuringChange}
+      />
       {loggedUser ? (
         <Switch>
           <Route exact path="/">
             <MainContent
               myCities={myCities}
               onLikeOrUnlike={handleLikeOrUnlike}
+              measuringSystem={measuringSystem}
+              onMeasuringChange={handleMeasuringChange}
             />
           </Route>
           <Route exact path="/manage">
