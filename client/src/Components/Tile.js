@@ -89,10 +89,8 @@ function Tile({ city, onUnlike, measuringSystem }) {
           >
             <Typography variant="body2">
               H:{fetchedCity.main.temp_max}
-              <span>&#176;</span> L:{fetchedCity.temp_min}
-              <span>&#176;</span>
+              <span>&#176;</span> L:{fetchedCity.main.temp_min}°
             </Typography>
-            <Typography variant="body2">{fetchedCity.main.temp}</Typography>
           </CardContent>
         </div>
       ) : (
