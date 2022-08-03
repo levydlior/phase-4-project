@@ -44,7 +44,6 @@ function FiveDaysWeather({ cityName }) {
   }, []);
 
   const fiveDaysWeatherList = fiveDaysForecast.map((day) => {
-    console.log(day)
     const date1 = new Date(day.dt_txt).toLocaleDateString();
     return (
       <Grid item xs={6} alignContent='flex-start' alignItems='flex-start' justify='flex-start'>

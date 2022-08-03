@@ -19,7 +19,6 @@ function ModalComponenet({ city, cityWeather, handleClose, open, onUnlike}) {
 
     const date1= new Date(dt*1000+(timezone*1000)).toLocaleDateString();
 
-    console.log(cityWeather.id)
 
     function handleUnlike(e) {
         e.stopPropagation();
