@@ -39,8 +39,7 @@ function ManageAccount({handleLogOut}) {
         }
     }
     
-    const handleDelete  = (e) => {
-        e.preventDefault()
+    const handleDelete  = () => {
         fetch("/users/1", { method: "DELETE" })
         handleLogOut()
     }
@@ -51,10 +50,10 @@ function ManageAccount({handleLogOut}) {
     }
 
     return (
-        <Container maxWidth="xs" onChange={handleInput}>
+        <Container sx={{pt:2}} maxWidth="xs" onChange={handleInput}>
             {exception ?
-            <FormLabel sx={{mt:3}} >{exception.errors}</FormLabel>
-            :null}
+            <FormLabel>{exception.errors}</FormLabel>
+            :<FormLabel>Enter new username and/or password to update</FormLabel>}
             <TextField
                 name="username"
                 type="text"
