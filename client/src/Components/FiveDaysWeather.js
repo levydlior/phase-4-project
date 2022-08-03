@@ -86,7 +86,7 @@ function FiveDaysWeather({ cityName, measuringSystem }) {
           direction="row"
           justifyContent="space-evenly"
           alignItems="center"
-          spacing={{ xs: 2, md: 4 }}
+          spacing={{ xs: 0, md: 0 }}
           columns={{ xs: 6, sm: 12, md: 30 }}
         >
           {loading ? (
