@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import SearchComponent from "./SearchComponent";
 import WeatherComponent from "./WeatherComponent";
 import MyCities from "./MyCities";
+import { Switch } from "@mui/material";
 
-function MainContent({ myCities, onLikeOrUnlike, measuringSystem }) {
+function MainContent({ myCities, onLikeOrUnlike, measuringSystem, onMeasuringChange }) {
   const [city, setCity] = useState([]);
   const [weather, setWeather] = useState([]);
   const [hasCity, setHasCity] = useState(false);
@@ -77,6 +78,8 @@ function MainContent({ myCities, onLikeOrUnlike, measuringSystem }) {
         setCity={setCity}
         onCitySearch={handleCitySearch}
         onLocationSearch={handleLocationSearch}
+        measuringSystem={measuringSystem}
+        onMeasuringChange={onMeasuringChange}
       />
       {renderWeather}
       <MyCities

@@ -2,15 +2,11 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { Switch } from "@mui/material";
 
-function NavBar({ loggedUser, onLogOut, measuringSystem, onMeasuringChange }) {
-  function handleMeasuringChange(e) {
-    onMeasuringChange();
-  }
+function NavBar({ loggedUser, onLogOut}) {
+
 
   return (
     <nav id="header-nav">
-      <p>F°/C°</p>
-      <Switch value={measuringSystem} onChange={handleMeasuringChange} />
       <p>Dark mode</p>
       <Switch />
       {!loggedUser ? null : (
