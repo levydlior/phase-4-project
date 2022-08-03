@@ -7,7 +7,7 @@
   <li>Technologies</li>
   <li>Setup</li>
   <li>Features</li>
-  <li>Improvments for future</li>
+  <li>Improvements for future</li>
   <li>Contacts</li>
 </ul>
  
