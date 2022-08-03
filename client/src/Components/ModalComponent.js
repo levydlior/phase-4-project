@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { Backdrop, Modal, Fade, Box, Typography, Card, CardHeader, CardContent, Container, Avatar, Button } from '@mui/material';
+import { Backdrop, Modal, Fade, Box, Typography, Card, CardHeader, CardContent, Container, Avatar, Button, Grid } from '@mui/material';
 import FiveDaysWeather from "./FiveDaysWeather";
+
 
 const style = {
     position: 'absolute',
@@ -65,11 +66,11 @@ function ModalComponenet({ city, cityWeather, handleClose, open, onUnlike}) {
                     }}
                     >
                     <Box p={0}>
-                    <Typography variant="h4" color="textPrimary">
+                    <Typography variant="h2" color="textPrimary">
                         {name}, {sys.country}
                     </Typography>
                     </Box>
-                    <Box p={0}>
+                    <Box p={2}>
                     <Typography variant="h2" color="textPrimary">
                         {main.temp}
                         <span>&#176;</span>
@@ -87,25 +88,34 @@ function ModalComponenet({ city, cityWeather, handleClose, open, onUnlike}) {
                     {weather[0].main}
                     </Typography>
                     </Box>
-                    <Box p={0}>
+                    <Box p={1}>
                     <Typography variant="h5" color="textPrimary">
                     High:{main.temp_max}<span>&#176;</span> Low:{main.temp_min}<span>&#176;</span>
                     </Typography>
                     </Box>
+                    <Box  
+                    container
+                    direction="row"
+                    justifyContent="space-evenly"
+                    alignItems="center"
+                    spacing={{ xs: 2, md: 4 }} 
+                    columns={{ xs: 2, sm: 4, md: 8 }}
+                    >
                     <Box p={0}>
-                    <Typography variant="h7" color="textPrimary">
+                    <Typography variant="h7" color="textSecondary">
                         Humidity: {main.humidity} %
                     </Typography>
                     </Box>
                     <Box p={0}>
-                    <Typography variant="h7" color="textPrimary">
-                        pressure: {main.pressure} pa
+                    <Typography variant="h7" color="textSecondary">
+                        Pressure: {main.pressure} pa
                     </Typography>
                     </Box>
                     <Box p={0}>
-                    <Typography variant="h7" color="textPrimary">
-                        wind: {wind.speed} mp/h
+                    <Typography variant="h7" color="textSecondary">
+                        Wind: {wind.speed} mp/h
                     </Typography>
+                    </Box>
                     </Box>
                     <FiveDaysWeather cityName={name}/>
                 </CardContent>
