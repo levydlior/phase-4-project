@@ -89,7 +89,7 @@ function ModalComponenet({
                 <Typography variant="h2" color="textPrimary">
                   {main.temp}
                   <span>&#176;</span>
-                  {"F"}
+                  {!measuringSystem? "F" : "C"}
                 </Typography>
               </Box>
               <Box p={0}>
