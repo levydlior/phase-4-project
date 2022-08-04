@@ -59,6 +59,7 @@ To run this project: <ol>
 <li>Refactoring the code: A better usage in the future will be to useContext or redux. We had plenty of props drilling.</li>
 <li>Inline styling: We used some inline styling rather than having it in a CSS file. An improvement will be to use styled components for cleaner more fluid code</li>
 <li>Having more dedicated places for our methods in the back (utilizing the full potential of MVC)</li>
+<li>Using the same style of functions- we mixed how we wrote our functions rather than agreeing on one style</li>
 </ul>
  
 # Contacts
