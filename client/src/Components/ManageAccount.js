@@ -13,10 +13,10 @@ function ManageAccount({
     verify: "",
   };
 
-  console.log(loggedUser.id);
   const [form, setForm] = useState(initialForm);
   const [exception, setException] = useState(null);
   const [editForm, setEditForm] = useState(false);
+  const [updated, setUpdated]= useState(null)
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -36,20 +36,23 @@ function ManageAccount({
             setForm({...initialForm, username: user.username});
             setException(null);
             setEditForm(false);
+            setUpdated("Account Updated!")
 
           });
         } else {
           resp.json().then((data) => {
             setException(data);
+            setUpdated(null)
           });
         }
       });
     } else {
+        setUpdated(null)
       setException({ errors: "passwords don't match!" });
     }
   };
   const handleDelete = () => {
-    fetch("/users/1", { method: "DELETE" });
+    fetch(`/users/${loggedUser.id}`, { method: "DELETE" });
     handleLogOut();
   };
 
@@ -86,6 +89,7 @@ function ManageAccount({
             label="New password"
             value={form.password}
             sx={{ mt: 1 }}
+            required
           />
           <TextField
             name="verify"
@@ -94,6 +98,7 @@ function ManageAccount({
             label="Verify password"
             value={form.verify}
             sx={{ mt: 1 }}
+            required
           />
           <Button
             type="submit"
@@ -104,9 +109,20 @@ function ManageAccount({
           >
             Update user info
           </Button>
+          <Button
+            fullWidth
+            variant="contained"
+            sx={{ mt: 2, mb: 5 }}
+            onClick={() => {
+                setUpdated(null)
+                setEditForm(false)}}
+          >
+            Cancel
+          </Button>
         </Container>
       ) : (
         <Container sx={{ pt: 2 }} maxWidth="xs" onChange={handleInput}>
+            {updated? updated : null}
           <h3>User name: {loggedUser.username}</h3>
           <Button
             fullWidth
