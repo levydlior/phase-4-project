@@ -7,8 +7,6 @@ function NavBar({ loggedUser, onLogOut}) {
 
   return (
     <nav id="header-nav">
-      <p>Dark mode</p>
-      <Switch />
       {!loggedUser ? null : (
         <>
           <NavLink to="/">Home</NavLink>
