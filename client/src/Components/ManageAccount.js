@@ -138,7 +138,7 @@ function ManageAccount({
             onClick={handleDelete}
             color="error"
           >
-            Delete user
+            Delete Account
           </Button>
         </Container>
       )}
