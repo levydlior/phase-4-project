@@ -43,6 +43,7 @@ function App() {
       if (r.ok) {
         setLoggedUser(null);
         setResponseFromAccountOrLogged(false);
+        setMeasuringSystem(false);
         history.push("/");
       }
     });
@@ -78,6 +79,10 @@ function App() {
     return <div></div>;
   }
 
+  function handleBackToMain() {
+    setMeasuringSystem(false);
+  }
+
   return (
     <div>
       <Header
@@ -97,7 +102,10 @@ function App() {
             />
           </Route>
           <Route exact path="/manage">
-            <ManageAccount handleLogOut={handleLogOut} />
+            <ManageAccount
+              handleLogOut={handleLogOut}
+              onBackToMain={handleBackToMain}
+            />
           </Route>
           <Route exact path="*">
             <h2>404 Error Not Found</h2>

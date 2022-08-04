@@ -1,7 +1,7 @@
 import React from "react";
 import NavBar from "./NavBar";
 
-function Header({ loggedUser, onLogOut}) {
+function Header({ loggedUser, onLogOut, }) {
   return (
     <header id="header">
       <div id="logo-and-title">

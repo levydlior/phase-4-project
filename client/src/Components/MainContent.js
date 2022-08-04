@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SearchComponent from "./SearchComponent";
 import WeatherComponent from "./WeatherComponent";
 import MyCities from "./MyCities";
-import { Switch } from "@mui/material";
 
 function MainContent({ myCities, onLikeOrUnlike, measuringSystem, onMeasuringChange }) {
   const [city, setCity] = useState([]);
@@ -37,6 +36,8 @@ function MainContent({ myCities, onLikeOrUnlike, measuringSystem, onMeasuringCha
     });
     setOpen(true);
   };
+
+
 
 
   const handleLocationSearch = (lat, lon) => {

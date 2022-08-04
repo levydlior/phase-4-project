@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Button, TextField, FormLabel, Container } from "@mui/material"
 
-function ManageAccount({handleLogOut}) {
+function ManageAccount({handleLogOut, onBackToMain}) {
     const initialForm = {
         username: "",
         password: "",
@@ -48,6 +48,10 @@ function ManageAccount({handleLogOut}) {
         const {name, value} = e.target
         setForm({...form, [name]: value})
     }
+
+    useEffect(()=> {
+        onBackToMain()
+      },[])
 
     return (
         <Container sx={{pt:2}} maxWidth="xs" onChange={handleInput}>
