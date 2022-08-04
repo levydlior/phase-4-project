@@ -60,6 +60,7 @@ To run this project: <ol>
 <li>Inline styling: We used some inline styling rather than having it in a CSS file. An improvement will be to use styled components for cleaner more fluid code</li>
 <li>Having more dedicated places for our methods in the back (utilizing the full potential of MVC)</li>
 <li>Using the same style of functions- we mixed how we wrote our functions rather than agreeing on one style</li>
+<li>We are limited to only 60 pull requests from the api so in the future maybe finding an api with more requests</li>
 </ul>
  
 # Contacts

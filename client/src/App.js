@@ -83,6 +83,10 @@ function App() {
     setMeasuringSystem(false);
   }
 
+  function handleUserInfoChange(user){
+      setLoggedUser(user)
+  }
+
   return (
     <div>
       <Header
@@ -105,6 +109,8 @@ function App() {
             <ManageAccount
               handleLogOut={handleLogOut}
               onBackToMain={handleBackToMain}
+              loggedUser={loggedUser}
+              onInfoChange={handleUserInfoChange}
             />
           </Route>
           <Route exact path="*">
