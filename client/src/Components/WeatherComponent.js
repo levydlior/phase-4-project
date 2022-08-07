@@ -58,7 +58,7 @@ function WeatherComponent({
   isInMyCities();
 
   function handleLikeClick() {
-    fetch("/tiles", {
+    fetch("/api/tiles", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -74,7 +74,7 @@ function WeatherComponent({
   }
 
   function handleUnlike() {
-    fetch(`/tiles/${cityId}`, {
+    fetch(`/api/tiles/${cityId}`, {
       method: "DELETE",
     }).then((r) => {
       if (r.ok) {

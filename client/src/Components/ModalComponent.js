@@ -39,7 +39,7 @@ function ModalComponenet({
 
   function handleUnlike(e) {
     e.stopPropagation();
-    fetch(`/tiles/${city.id}`, {
+    fetch(`/api/tiles/${city.id}`, {
       method: "DELETE",
     }).then((r) => {
       if (r.ok) {
