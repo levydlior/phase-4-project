@@ -1,4 +1,4 @@
-class CitiesController < ApplicationController
+class Api::CitiesController < ApplicationController
 
   # GET /cities
   def index

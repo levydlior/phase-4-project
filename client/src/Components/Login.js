@@ -19,7 +19,7 @@ function Login({ onCreateOrLog, responseFromAccountOrLogged }) {
   function handleLoginSubmit(e) {
     e.preventDefault();
 
-    fetch("/login", {
+    fetch("/api/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

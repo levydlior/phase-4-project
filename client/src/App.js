@@ -16,7 +16,7 @@ function App() {
   const [measuringSystem, setMeasuringSystem] = useState(false);
 
   useEffect(() => {
-    fetch("/users/show").then((r) => {
+    fetch("/api/users/show").then((r) => {
       if (r.ok) {
         r.json().then((user) => {
           setLoggedUser(user);
@@ -29,7 +29,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    fetch("/cities").then((r) => {
+    fetch("/api/cities").then((r) => {
       if (r.ok) {
         r.json().then((likeCities) => setMyCities(likeCities));
       }
@@ -37,7 +37,7 @@ function App() {
   }, [loggedUser]);
 
   function handleLogOut(e) {
-    fetch("/logout", {
+    fetch("/api/logout", {
       method: "DELETE",
     }).then((r) => {
       if (r.ok) {

@@ -1,4 +1,4 @@
-class TilesController < ApplicationController
+class Api::TilesController < ApplicationController
 
 
     def create

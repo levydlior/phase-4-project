@@ -22,7 +22,7 @@ function ManageAccount({
     e.preventDefault();
     if (form.password === form.verify) {
       const updateObj = { username: form.username, password: form.password };
-      fetch(`/users/${loggedUser.id}`, {
+      fetch(`/api/users/${loggedUser.id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -52,7 +52,7 @@ function ManageAccount({
     }
   };
   const handleDelete = () => {
-    fetch(`/users/${loggedUser.id}`, { method: "DELETE" });
+    fetch(`/api/users/${loggedUser.id}`, { method: "DELETE" });
     handleLogOut();
   };
 

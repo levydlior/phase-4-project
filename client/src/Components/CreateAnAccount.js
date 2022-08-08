@@ -19,7 +19,7 @@ function CreateAnAccount({ onCreateOrLog, responseFromAccountOrLogged }) {
   function handleCreateSubmit(e) {
     e.preventDefault();
 
-    fetch("/users", {
+    fetch("/api/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
