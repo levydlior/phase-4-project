@@ -4,6 +4,7 @@
 
 <ul>
   <li>General Info</li>
+  <li>Demo</li>
   <li>Technologies</li>
   <li>Setup</li>
   <li>Features</li>
@@ -25,6 +26,12 @@ Our app uses open weather map api to provide you with the updated weather.
 <li>Rails</li>
 <li>Ruby</li>
 </ul>
+
+#Demo
+
+<ul>
+<li>Demo link: https://stark-fortress-61461.herokuapp.com/</li>
+<ul>
  
 # Setup
  
