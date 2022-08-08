@@ -27,7 +27,7 @@ Our app uses open weather map api to provide you with the updated weather.
 <li>Ruby</li>
 </ul>
 
-#Demo
+# Demo
 
 <ul>
 <li>Demo link: https://stark-fortress-61461.herokuapp.com/</li>
