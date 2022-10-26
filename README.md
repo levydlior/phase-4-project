@@ -14,7 +14,7 @@
  
 # General Info
  
-Our app uses open weather map api to provide you with the updated weather.
+Our app uses the OpenWeatherMap API to provide you with up-to-date weather information.
  
 # Technologies
  
