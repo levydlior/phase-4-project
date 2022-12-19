@@ -27,12 +27,6 @@ Our app uses the OpenWeatherMap API to provide you with up-to-date weather infor
 <li>Ruby</li>
 </ul>
 
-# Demo
-
-<ul>
-<li>Demo link: https://stark-fortress-61461.herokuapp.com/</li>
-<ul>
- 
 # Setup
  
 To run this project: <ol>
